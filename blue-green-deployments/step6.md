@@ -10,7 +10,7 @@ To rollout all the traffic to the new service, the weight of the cluster should 
                       weight: 100
 </pre>
 
-## Restart Proxy
+## Restart Proxy
 
 As before, the proxy needs to be restarted to pick up the new changes. 
 

@@ -1,6 +1,6 @@
 With the Envoy configuration and EDS conf defined, it's now possible to start the proxy. 
 
-## Task
+## Task
 
 Launch the container with the following command:
 

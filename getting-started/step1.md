@@ -8,7 +8,7 @@ The first line of the Envoy configuration defines the API configuration being us
 
 <pre class="file"  data-filename="envoy.yaml" data-target="replace">static_resources:</pre>
 
-## Listeners
+## Listeners
 
 The beginning of the configuration defines the _Listeners_. A Listener is the networking configuration, such as IP address and ports, that Envoy listens to for requests. Envoy runs inside of a Docker Container, so it needs to listen on the IP address **0.0.0.0**. In this case, Envoy will listen on port **10000**.
 
@@ -20,7 +20,7 @@ Below is the configuration to define this setup. Copy the snippet to the editor.
       socket_address: { address: 0.0.0.0, port_value: 10000 }
 </pre>
 
-## Filter Chains and Filters
+## Filter Chains and Filters
 
 With Envoy listening for incoming traffic, the next stage is to define how to process the requests. Each Listener has a set of filters, and different Listeners can have a different set of filters.
 
@@ -59,7 +59,7 @@ The filter is using *envoy.http_connection_manager*, a built-in filter designed 
 
 - ***http_filters:*** The filter allows Envoy to adapt and modify the request as it is processed.
 
-## Clusters
+## Clusters
 
 When a request matches a filter, the request is passed onto a cluster. The cluster shown below defines that the host is google.com running over HTTPS. If multiple hosts had been defined, then Envoy would perform a Round Robin strategy.
 

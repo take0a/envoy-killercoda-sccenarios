@@ -1,6 +1,6 @@
 With the configuration in place, the container can be launched and provided to Envoy. With Docker, this is done via a Volume Mount to _/etc/envoy/envoy.yaml_.
 
-## Start Envoy
+## Start Envoy
 
 Launch the Proxy, bound to port 80 with:
 
@@ -9,7 +9,7 @@ Launch the Proxy, bound to port 80 with:
   -v $(pwd)/envoy/envoy.yaml:/etc/envoy/envoy.yaml \
   envoyproxy/envoy:latest`{{execute}}
 
-## View Envoy
+## View Envoy
 Once started, you should be able to send HTTP requests to port 80 with `curl localhost`{{execute}}.
 
 You can view this via your local browser with the [URL]({{TRAFFIC_HOST1_80}}).

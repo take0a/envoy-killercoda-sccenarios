@@ -1,6 +1,6 @@
 The final example uses Envoy to proxy traffic to different Python services based on the requested URL path.
 
-## Configuration
+## Configuration
 
 The configuration of the application is defined as a Docker Compose file. We use a Docker Compose file because we want to run several containers simultaneously - one for the proxy and one for each of the individual services.
 
@@ -12,7 +12,7 @@ The service is a Python web application it also uses Envoy within the container 
 
 `examples/front-proxy/service.py`{{open}}
 
-## Envoy Frontend Proxy
+## Envoy Frontend Proxy
 
 The Envoy proxy configuration is defined in: `examples/front-proxy/front-envoy.yaml`{{open}}
 
@@ -37,7 +37,7 @@ Start the example using the Docker Compose command below:
 
 `docker-compose -f ~/envoy/examples/front-proxy/docker-compose.yml up -d`{{execute}}
 
-## Admin View
+## Admin View
 
 Once started, you can view the admin interface at [URL]({{TRAFFIC_HOST1_8001}}).
 
@@ -47,7 +47,7 @@ Additional information, such as the clusters available and their metrics is avai
 
 You can discover more metrics from the server at [URL]({{TRAFFIC_HOST1_8001}}/stats). 
 
-## Application Routing
+## Application Routing
 
 With Envoy listening on port 8000, you can make requests. Based on the URL used, different services will respond according to the configuration.
 

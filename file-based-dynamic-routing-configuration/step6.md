@@ -1,6 +1,6 @@
 With the configuration based on EDS, when the services need to be scaled up a new endpoint can be added to the `eds.conf`{{open}}. Envoy will then automatically include the changes.
 
-## Task
+## Task
 
 Replace the configuration with the following to add a new endpoint to the cluster.
 

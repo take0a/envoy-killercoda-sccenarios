@@ -8,7 +8,7 @@ The admin can be defined by adding an additional resource definition, where the 
     socket_address: { address: 0.0.0.0, port_value: 9901 }
 </pre>
 
-## Start Admin
+## Start Admin
 
 This Docker Container also exposes the admin port to the outside world. The resource configuration above will make the admin view available to the public and should be used for demonstration purposes **only**, see the [documentation](https://www.envoyproxy.io/docs/envoy/latest/operations/admin) on how to secure the admin portal.
 

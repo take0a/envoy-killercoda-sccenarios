@@ -27,7 +27,7 @@ After that you need to define how ***eds_cluster*** are resolved. For this examp
     hosts: [{ socket_address: { address: 172.18.0.4, port_value: 8080 }}]
 </pre>
 
-## Task
+## Task
 
 Launch Envoy with the following command:
 

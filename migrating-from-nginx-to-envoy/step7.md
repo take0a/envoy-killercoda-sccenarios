@@ -12,7 +12,7 @@ The command below will launch Envoy Proxy via a Docker Container on the host. Th
 
 `docker run --name proxy1 -p 80:8080 --user 1000:1000 -v /root/envoy.yaml:/etc/envoy/envoy.yaml envoyproxy/envoy`{{execute T2}}
 
-## Testing
+## Testing
 
 With the Proxy initiated, tests can now be made and processed. The following cURL command issues a request with the host header defined in the proxy configuration.
 
@@ -28,7 +28,7 @@ With the services available, Envoy can successfully proxy traffic to the target 
 
 You should see a response indicating which docker container processed the request. Within the Envoy Proxy logs, you should also see the access line outputted.
 
-## Additional HTTP Response Headers
+## Additional HTTP Response Headers
 
 Within the response headers of the valid request you will see additional HTTP headers. The header displays the time that upstream host spent processing the request. It is expressed in milliseconds. This is useful if the client wants to determine service time compared to network latency.
 

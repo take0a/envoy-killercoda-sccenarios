@@ -4,7 +4,7 @@ In a separate terminal window, launch a loop that will send requests. This will 
 
 `while true; do curl localhost; sleep .5; done`{{execute T2}}
 
-## Mark Node Unhealthy
+## Mark Node Unhealthy
 
 With the following command, you can identify which Docker Container has the IP `172.18.0.3`. This will be the node that will become unhealthy and later be removed from the load balancing rotation.
 

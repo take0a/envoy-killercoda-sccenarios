@@ -1,10 +1,10 @@
-## Restart Proxy
+## Restart Proxy
 
 As we have defined this example using the static API, the proxy needs to be restarted to detect the changes.
 
 `docker rm -f proxy1; docker run -d --name proxy1 -p 80:8080 -v /root/:/etc/envoy envoyproxy/envoy`{{execute}}
 
-## Testing
+## Testing
 
 To test the weighted changes, make a series of requests to the newly defined service. You should see two different responses, with most coming from v2 and a smaller number of requests from v3.
 

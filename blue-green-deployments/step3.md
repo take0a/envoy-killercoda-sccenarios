@@ -10,7 +10,7 @@ It's possible to compare the Envoy cluster configuration with the IP address and
 
 `docker ps -q | xargs -n 1 docker inspect --format '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}} {{ .Config.Hostname }} {{ .Config.Image }}' | sed 's/ \// /'`{{execute T1}}
 
-## Test via HTTP Headers
+## Test via HTTP Headers
 
 With everything deployed, it's possible to test the configuration using cURL. 
 

@@ -7,7 +7,7 @@ These are just guidelines, not rules. Use your best judgment, and feel free to p
 
 For contributing to Envoy Proxy code-base, visit [https://github.com/envoyproxy/envoy](https://github.com/envoyproxy/envoy/blob/master/CONTRIBUTING.md)
 
-## Contributing to Tutorials and Creating New Interactive Tutorials
+## Contributing to Tutorials and Creating New Interactive Tutorials
 
 The aim of the interactive tutorials is to provide users of Envoy with a live environment to experiment, explore configuration and understand how to configure Envoy to meet their goals.
 

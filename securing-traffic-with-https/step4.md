@@ -2,7 +2,7 @@ With the additional configuration in place, Envoy can be started.
 
 In this case, the Proxy is exposed on both Port 80 for the HTTP traffic, and 443 for HTTPS. It's also exposing the admin dashboard on 8001 allowing you to view the dashboard information about the certificates.
 
-## Start Envoy
+## Start Envoy
 
 `docker run -it --name proxy1 -p 80:8080 -p 443:8443 -p 8001:8001 -v /root/:/etc/envoy/ envoyproxy/envoy`{{execute T2}}
 
@@ -10,7 +10,7 @@ All the HTTPS and TLS termination is handled via Envoy Proxy meaning the applica
 
 `docker run -d katacoda/docker-http-server; docker run -d katacoda/docker-http-server;`{{execute T1}}
 
-## Testing Configuration
+## Testing Configuration
 
 With the Proxy started, it's possible to test the configuration.
 
@@ -34,13 +34,13 @@ Note, without `-k` argument, cURL will respond with an error due to the self-sig
 
 `curl -H "Host: example.com" https://localhost/service/2 -i`{{execute T1}}
 
-## Verify Certificate
+## Verify Certificate
 
 Using OpenSSL CLI it's possible to view the certificate returned from a server. This will allow us to verify the correct certificate is being returned from Envoy:
 
 `echo | openssl s_client -showcerts -servername example.com -connect localhost:443 2>/dev/null | openssl x509 -inform pem -noout -text`{{execute T1}}
 
 
-## Dashboard
+## Dashboard
 
 The dashboard returns information about the certificates defined and their age. More information can be discovered at [URL]({{TRAFFIC_HOST1_8001}}/certs).

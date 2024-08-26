@@ -1,6 +1,6 @@
 The contents of `eds.conf`{{open}} is a JSON definition of the same information defined within our static configuration. 
 
-## Task
+## Task
 
 Create `eds.conf`{{open}} file with the following content:
 

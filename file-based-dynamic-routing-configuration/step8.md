@@ -2,7 +2,7 @@ With the configuration based on CDS, LDS and EDS, we can dynamically add a new c
 
 Open the file `cds.conf`{{open}}.
 
-## Add new cluster
+## Add new cluster
 
 We'll call this new cluster `newTargetCluster`. Replace the configuration with the following to add a new cluster.
 

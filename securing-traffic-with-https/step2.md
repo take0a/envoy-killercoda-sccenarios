@@ -2,7 +2,7 @@ To secure HTTP traffic the addition of a ***`tls_context`*** is required as a fi
 
 In this case, the certificates are our self-signed generated in the first step.
 
-## Add TLS Context to HTTPS Listener
+## Add TLS Context to HTTPS Listener
 
 Open the `envoy.yaml`{{open}} configuration file. It contains an outline of the required HTTPS support. It has two listeners configured, one on port 8080 for HTTP traffic and another on 8443 for HTTPS traffic.
 

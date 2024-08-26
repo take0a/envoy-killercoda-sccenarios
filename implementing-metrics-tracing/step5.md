@@ -42,7 +42,7 @@ Select **Prometheus** as the data source and Import.
 
 Should see a big spike in the traffic on the dashboard.
 
-## Generate Errors
+## Generate Errors
 
 `curl 172.18.0.3/unhealthy; curl 172.18.0.4/unhealthy;`{{execute}}
 
