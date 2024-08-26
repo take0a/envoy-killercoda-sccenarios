@@ -2,9 +2,7 @@ Now, let's run grafana with this command:
 
 `docker run --name=grafana -d -p 3000:3000 grafana/grafana`{{execute T1}}
 
-And access to the dashboard using this url:
-
-https://[[HOST_SUBDOMAIN]]-3000-[[KATACODA_HOST]].environments.katacoda.com/
+And access to the dashboard using this [url]({{TRAFFIC_HOST1_3000}}).
 
 And use this default credentials:
 `admin`{{copy}} \ `admin`{{copy}}
@@ -36,7 +34,7 @@ Select **Prometheus** as the data source and Import.
 
 ![](/envoyproxy/scenarios/implementing-metrics-tracing/assets/import.png)
 
-[View Dashboard for the targetCluster](https://[[HOST_SUBDOMAIN]]-3000-[[KATACODA_HOST]].environments.katacoda.com/d/000000003/envoy-proxy?refresh=5s&orgId=1&var-cluster=targetCluster&var-hosts=All)
+[View Dashboard for the targetCluster]({{TRAFFIC_HOST1_3000}}/d/000000003/envoy-proxy?refresh=5s&orgId=1&var-cluster=targetCluster&var-hosts=All)
 
 ## Change Traffic
 
@@ -49,7 +47,6 @@ Should see a big spike in the traffic on the dashboard.
 `curl 172.18.0.3/unhealthy; curl 172.18.0.4/unhealthy;`{{execute}}
 
 Within Prometheus, you will also see a increase in the number of 500 error messages.
-
-https://[[HOST_SUBDOMAIN]]-9090-[[KATACODA_HOST]].environments.katacoda.com/graph
+[URL]({{TRAFFIC_HOST1_9090}}/graph)
 
 `envoy_cluster_external_upstream_rq{envoy_cluster_name="targetCluster"}`{{copy}}

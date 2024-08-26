@@ -39,13 +39,13 @@ Start the example using the Docker Compose command below:
 
 ## Admin View
 
-Once started, you can view the admin interface at https://[[HOST_SUBDOMAIN]]-8001-[[KATACODA_HOST]].environments.katacoda.com/
+Once started, you can view the admin interface at [URL]({{TRAFFIC_HOST1_8001}}).
 
-You can view the routing configuration as JSON at https://[[HOST_SUBDOMAIN]]-8001-[[KATACODA_HOST]].environments.katacoda.com/config_dump
+You can view the routing configuration as JSON at [URL]({{TRAFFIC_HOST1_8001}}/config_dump).
 
-Additional information, such as the clusters available and their metrics is available at https://[[HOST_SUBDOMAIN]]-8001-[[KATACODA_HOST]].environments.katacoda.com/clusters
+Additional information, such as the clusters available and their metrics is available at [URL]({{TRAFFIC_HOST1_8001}}/clusters).
 
-You can discover more metrics from the server at https://[[HOST_SUBDOMAIN]]-8001-[[KATACODA_HOST]].environments.katacoda.com/stats
+You can discover more metrics from the server at [URL]({{TRAFFIC_HOST1_8001}}/stats). 
 
 ## Application Routing
 

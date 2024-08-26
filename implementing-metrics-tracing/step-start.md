@@ -50,4 +50,4 @@ And you can request through envoy
 
 Envoy is answering the request and balancing between the two nodes with a `ROUND_ROBIN` strategy according to our configuration.
 
-Also, you can test this via your local browser with the URL https://[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/
+Also, you can test this via your local browser with the [URL]({{TRAFFIC_HOST1_80}}).

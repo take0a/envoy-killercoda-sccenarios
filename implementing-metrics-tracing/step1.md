@@ -21,6 +21,5 @@ docker run -d -p 9090:9090 \
     prom/prometheus
 ```{{execute}}
 
-You can access to the prometheus dashboard using this link:
+You can access to the prometheus dashboard using this [link]({{TRAFFIC_HOST1_80}}/targets).
 
-https://[[HOST_SUBDOMAIN]]-9090-[[KATACODA_HOST]].environments.katacoda.com/targets

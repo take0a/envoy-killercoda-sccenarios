@@ -43,4 +43,4 @@ Using OpenSSL CLI it's possible to view the certificate returned from a server. 
 
 ## Dashboard
 
-The dashboard returns information about the certificates defined and their age. More information can be discovered at https://[[HOST_SUBDOMAIN]]-8001-[[KATACODA_HOST]].environments.katacoda.com/certs
+The dashboard returns information about the certificates defined and their age. More information can be discovered at [URL]({{TRAFFIC_HOST1_8001}}/certs).

@@ -20,6 +20,6 @@ To expose the admin portal, run the following command:
     -v $(pwd)/envoy/envoy.yaml:/etc/envoy/envoy.yaml \
     envoyproxy/envoy:latest`{{execute}}
 
-The dashboard is now available at https://[[HOST_SUBDOMAIN]]-9901-[[KATACODA_HOST]].environments.katacoda.com/
+The dashboard is now available at [URL]({{TRAFFIC_HOST1_9901}}). 
 
 > "The administration interface in its current form both allows destructive operations to be performed (e.g., shutting down the server) as well as potentially exposes private information (e.g., stats, cluster names, cert info, etc.). It is critical that access to the administration interface is only allowed via a secure network" **[Envoy Documentation](https://www.envoyproxy.io/docs/envoy/latest/operations/admin)**
