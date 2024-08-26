@@ -61,6 +61,6 @@
     "hideuieditortree": true
   },
   "backend": {
-    "imageid": "envoy-docker"
+    "imageid": "ubuntu"
   }
 }

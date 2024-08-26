@@ -51,6 +51,6 @@
     "uilayout": "editor-terminal"
   },
   "backend": {
-    "imageid": "envoy-docker"
+    "imageid": "ubuntu"
   }
 }
