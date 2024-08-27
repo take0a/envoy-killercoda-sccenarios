@@ -4,10 +4,12 @@ With the configuration in place, the container can be launched and provided to E
 
 Launch the Proxy, bound to port 80 with:
 
-`docker run --name=proxy -d \
+```
+docker run --name=proxy -d \
   -p 80:10000 \
   -v $(pwd)/envoy/envoy.yaml:/etc/envoy/envoy.yaml \
-  envoyproxy/envoy:latest`{{execute}}
+  envoyproxy/envoy:v1.31-latest
+```{{execute}}
 
 ## View Envoy
 Once started, you should be able to send HTTP requests to port 80 with `curl localhost`{{execute}}.

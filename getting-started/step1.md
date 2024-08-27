@@ -6,7 +6,9 @@ Envoy also supports Dynamic Configuration. This allows the settings to be discov
 
 The first line of the Envoy configuration defines the API configuration being used. In this case, we're configuring the Static API, so the first line should be *static_resources*. Copy the snippet to the editor.
 
-<pre class="file"  data-filename="envoy.yaml" data-target="replace">static_resources:</pre>
+```
+static_resources:
+```{{copy}}
 
 ## Listeners
 
@@ -14,14 +16,15 @@ The beginning of the configuration defines the _Listeners_. A Listener is the ne
 
 Below is the configuration to define this setup. Copy the snippet to the editor.
 
-<pre class="file"  data-filename="envoy.yaml" data-target="append">  listeners:
+```
+  listeners:
   - name: listener_0
     address:
       socket_address:
         protocol: TCP
         address: 0.0.0.0
         port_value: 10000
-</pre>
+```{{copy}}
 
 ## Filter Chains and Filters
 
@@ -31,7 +34,8 @@ In this example, we'll proxy all traffic to Google.com (thanks Google!). The res
 
 Filtering is defined using *filter_chains*. The aim of each _filter_ is to find a match on the incoming request, to match it to the target destination. Copy the snippet to the editor.
 
-<pre class="file"  data-filename="envoy.yaml" data-target="append">    filter_chains:
+```
+    filter_chains:
     - filters:
       - name: envoy.filters.network.http_connection_manager
         typed_config:
@@ -52,7 +56,7 @@ Filtering is defined using *filter_chains*. The aim of each _filter_ is to find 
           - name: envoy.filters.http.router
             typed_config:
               "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
-</pre>
+```{{copy}}
 
 The filter is using *envoy.http_connection_manager*, a built-in filter designed for HTTP connections. The details are as follows:
 
@@ -74,7 +78,8 @@ When a request matches a filter, the request is passed onto a cluster. The clust
 
 Copy the cluster implementation to complete the configuration:
 
-<pre class="file"  data-filename="envoy.yaml" data-target="append">  clusters:
+```
+  clusters:
   - name: service_google
     connect_timeout: 30s
     type: LOGICAL_DNS
@@ -103,20 +108,21 @@ Copy the cluster implementation to complete the configuration:
         "@type": type.googleapis.com/envoy.extensions.transport_sockets.quic.v3.QuicUpstreamTransport
         upstream_tls_context:
           sni: www.google.com
-</pre>
+```{{copy}}
 
 ## Admin
 
 Finally, an admin section is required. The admin section is explained in more detail in the following steps.
 
-<pre class="file"  data-filename="envoy.yaml" data-target="append">admin:
+```
+admin:
   address:
     socket_address:
       protocol: TCP
       address: 0.0.0.0
       port_value: 9901
-</pre>
+```{{copy}}
 
 This structure defines the boilerplate for Envoy Static Configuration. The Listener defines the ports and IP address for Envoy. The listener has a set of filters to match on the incoming requests. Once a request is matched, it will be forwarded to a cluster.
 
-You can view the full configuration on [Github](https://github.com/envoyproxy/envoy/blob/6a578630a8f6189f86bc1e6b4b4d7ebffabadadd/configs/google_com_proxy.v2.yaml).
+You can view the full configuration on [Github](https://github.com/envoyproxy/envoy/blob/main/configs/google_com_http3_upstream_proxy.yaml).

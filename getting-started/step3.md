@@ -2,11 +2,12 @@ Envoy provides an administration view, allowing you to view configuration, stats
 
 The admin can be defined by adding an additional resource definition, where the port for the admin view is defined. The port should not conflict with other Listener configurations.
 
-<pre class="file">admin:
+```
+admin:
   access_log_path: /tmp/admin_access.log
   address:
     socket_address: { address: 0.0.0.0, port_value: 9901 }
-</pre>
+```
 
 ## Start Admin
 
@@ -14,11 +15,13 @@ This Docker Container also exposes the admin port to the outside world. The reso
 
 To expose the admin portal, run the following command:
 
-`docker run --name=proxy-with-admin -d \
+```
+docker run --name=proxy-with-admin -d \
     -p 9901:9901 \
     -p 10000:10000 \
     -v $(pwd)/envoy/envoy.yaml:/etc/envoy/envoy.yaml \
-    envoyproxy/envoy:latest`{{execute}}
+    envoyproxy/envoy:v1.31-latest
+```{{execute}}
 
 The dashboard is now available at [URL]({{TRAFFIC_HOST1_9901}}). 
 
