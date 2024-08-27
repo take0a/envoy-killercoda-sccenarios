@@ -6,19 +6,23 @@
     "steps": [
       {
         "title": "Create Proxy Config",
-        "text": "step1.md"
+        "text": "step1.md",
+        "foreground": "assets/step1/foreground.sh"
       },
       {
         "title": "Start Proxy",
-        "text": "step2.md"
+        "text": "step2.md",
+        "foreground": "assets/step2/foreground.sh"
       },
       {
         "title": "Admin View",
-        "text": "step3.md"
+        "text": "step3.md",
+        "foreground": "assets/step2/foreground.sh"
       },
       {
         "title": "Route to Docker Containers",
-        "text": "step4.md"
+        "text": "step4.md",
+        "foreground": "assets/step4/foreground.sh"
       }
     ],
     "intro": {
@@ -26,6 +30,11 @@
     },
     "finish": {
       "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {"file": "**", "target": "~/assets"}
+      ]
     }
   },
   "files": ["envoy.yaml"],

@@ -17,7 +17,10 @@ Below is the configuration to define this setup. Copy the snippet to the editor.
 <pre class="file"  data-filename="envoy.yaml" data-target="append">  listeners:
   - name: listener_0
     address:
-      socket_address: { address: 0.0.0.0, port_value: 10000 }
+      socket_address:
+        protocol: TCP
+        address: 0.0.0.0
+        port_value: 10000
 </pre>
 
 ## Filter Chains and Filters
@@ -30,8 +33,9 @@ Filtering is defined using *filter_chains*. The aim of each _filter_ is to find 
 
 <pre class="file"  data-filename="envoy.yaml" data-target="append">    filter_chains:
     - filters:
-      - name: envoy.http_connection_manager
-        config:
+      - name: envoy.filters.network.http_connection_manager
+        typed_config:
+          "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
           stat_prefix: ingress_http
           route_config:
             name: local_route
@@ -39,10 +43,15 @@ Filtering is defined using *filter_chains*. The aim of each _filter_ is to find 
             - name: local_service
               domains: ["*"]
               routes:
-              - match: { prefix: "/" }
-                route: { host_rewrite: www.google.com, cluster: service_google }
+              - match:
+                  prefix: "/"
+                route:
+                  host_rewrite_literal: www.google.com
+                  cluster: service_google
           http_filters:
-          - name: envoy.router
+          - name: envoy.filters.http.router
+            typed_config:
+              "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
 </pre>
 
 The filter is using *envoy.http_connection_manager*, a built-in filter designed for HTTP connections. The details are as follows:
@@ -67,12 +76,33 @@ Copy the cluster implementation to complete the configuration:
 
 <pre class="file"  data-filename="envoy.yaml" data-target="append">  clusters:
   - name: service_google
-    connect_timeout: 0.25s
+    connect_timeout: 30s
     type: LOGICAL_DNS
+    # Comment out the following line to test on v6 networks
     dns_lookup_family: V4_ONLY
     lb_policy: ROUND_ROBIN
-    hosts: [{ socket_address: { address: google.com, port_value: 443 }}]
-    tls_context: { sni: www.google.com }
+    load_assignment:
+      cluster_name: service_google
+      endpoints:
+      - lb_endpoints:
+        - endpoint:
+            address:
+              socket_address:
+                address: www.google.com
+                port_value: 443
+    typed_extension_protocol_options:
+      envoy.extensions.upstreams.http.v3.HttpProtocolOptions:
+        "@type": type.googleapis.com/envoy.extensions.upstreams.http.v3.HttpProtocolOptions
+        explicit_http_config:
+          http3_protocol_options: {}
+        common_http_protocol_options:
+          idle_timeout: 1s
+    transport_socket:
+      name: envoy.transport_sockets.quic
+      typed_config:
+        "@type": type.googleapis.com/envoy.extensions.transport_sockets.quic.v3.QuicUpstreamTransport
+        upstream_tls_context:
+          sni: www.google.com
 </pre>
 
 ## Admin
@@ -80,9 +110,11 @@ Copy the cluster implementation to complete the configuration:
 Finally, an admin section is required. The admin section is explained in more detail in the following steps.
 
 <pre class="file"  data-filename="envoy.yaml" data-target="append">admin:
-  access_log_path: /tmp/admin_access.log
   address:
-    socket_address: { address: 0.0.0.0, port_value: 9901 }
+    socket_address:
+      protocol: TCP
+      address: 0.0.0.0
+      port_value: 9901
 </pre>
 
 This structure defines the boilerplate for Envoy Static Configuration. The Listener defines the ports and IP address for Envoy. The listener has a set of filters to match on the incoming requests. Once a request is matched, it will be forwarded to a cluster.
