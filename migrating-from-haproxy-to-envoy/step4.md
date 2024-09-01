@@ -69,6 +69,6 @@ access_log:
     json_format: {"protocol": "%PROTOCOL%", "duration": "%DURATION%", "request_method": "%REQ(:METHOD)%"}
 ```
 
-More information on Envoy's logging approach can be found [here](https://www.envoyproxy.io/docs/envoy/latest/configuration/access_log#config-access-log-format-dictionaries).
+More information on Envoy's logging approach can be found [here](https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#format-dictionaries).
 
-Logging isn't the only way to gain visibility into production with Envoy Proxy.  Advanced tracing and metrics capabilities are built into the platform. You can find out more in the [tracing documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/tracing) or via the [Interactive Tracing Scenario](https://www.envoyproxy.io/try/implementing-metrics-tracing).
+Logging isn't the only way to gain visibility into production with Envoy Proxy.  Advanced tracing and metrics capabilities are built into the platform. You can find out more in the [tracing documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing) or via the [Interactive Tracing Scenario](https://killercoda.com/envoyproxy-scenarios/scenario/implementing-metrics-tracing).
