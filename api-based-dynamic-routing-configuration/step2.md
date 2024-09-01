@@ -36,5 +36,5 @@ docker run --name=api-eds -d \
     -p 9901:9901 \
     -p 80:10000 \
     -v /root/:/etc/envoy \
-    envoyproxy/envoy:latest
+    envoyproxy/envoy:v1.31-latest
 ```{{execute}}

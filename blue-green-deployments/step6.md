@@ -14,7 +14,7 @@ To rollout all the traffic to the new service, the weight of the cluster should 
 
 As before, the proxy needs to be restarted to pick up the new changes. 
 
-`docker rm -f proxy1; docker run -d --name proxy1 -p 80:8080 -v /root/:/etc/envoy envoyproxy/envoy`{{execute}}
+`docker rm -f proxy1; docker run -d --name proxy1 -p 80:8080 -v /root/:/etc/envoy envoyproxy/envoy:v1.31-latest`{{execute}}
 
 Now when the endpoint is accessed, all the traffic will me from the `service3b` cluster.
 

@@ -9,7 +9,7 @@ docker run --name=proxy-eds-filebased -d \
     -p 9901:9901 \
     -p 80:10000 \
     -v /root/:/etc/envoy \
-    envoyproxy/envoy:latest
+    envoyproxy/envoy:v1.31-latest
 ```{{execute}}
 
 Start two HTTP servers to handle the incoming requests.

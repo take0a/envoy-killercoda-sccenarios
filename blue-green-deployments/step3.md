@@ -1,6 +1,6 @@
 With the configuration created, start Envoy with the command below:
 
-`docker run -d --name proxy1 -p 80:8080 -v /root/:/etc/envoy envoyproxy/envoy`{{execute}}
+`docker run -d --name proxy1 -p 80:8080 -v /root/:/etc/envoy envoyproxy/envoy:v1.31-latest`{{execute}}
 
 The configuration has hardcoded a series of IP addresses that are the destinations of the traffic. The command below will start a series of HTTP servers. Some of the HTTP servers will return different responses based on their version. Click the command to launch it within the terminal.
 

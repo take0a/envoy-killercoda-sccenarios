@@ -2,7 +2,7 @@
 
 As we have defined this example using the static API, the proxy needs to be restarted to detect the changes.
 
-`docker rm -f proxy1; docker run -d --name proxy1 -p 80:8080 -v /root/:/etc/envoy envoyproxy/envoy`{{execute}}
+`docker rm -f proxy1; docker run -d --name proxy1 -p 80:8080 -v /root/:/etc/envoy envoyproxy/envoy:v1.31-latest`{{execute}}
 
 ## Testing
 

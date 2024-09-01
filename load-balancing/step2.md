@@ -32,7 +32,7 @@ docker run --name=proxy -d \
   -p 80:10000 \
   -p 9901:9901 \
   -v $(pwd)/envoy/:/etc/envoy \
-  envoyproxy/envoy:latest
+  envoyproxy/envoy:v1.31-latest
 ```{{execute}}
 
 And then start two http servers using this command:

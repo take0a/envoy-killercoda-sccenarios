@@ -4,7 +4,7 @@ In this case, the Proxy is exposed on both Port 80 for the HTTP traffic, and 443
 
 ## Start Envoy
 
-`docker run -it --name proxy1 -p 80:8080 -p 443:8443 -p 8001:8001 -v /root/:/etc/envoy/ envoyproxy/envoy`{{execute}}
+`docker run -it --name proxy1 -p 80:8080 -p 443:8443 -p 8001:8001 -v /root/:/etc/envoy/ envoyproxy/envoy:v1.31-latest`{{execute}}
 
 All the HTTPS and TLS termination is handled via Envoy Proxy meaning the application doesn't need to be modified. To start a series of HTTP servers to handle the incoming requests run the following command:
 

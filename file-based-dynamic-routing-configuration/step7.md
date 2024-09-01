@@ -100,7 +100,7 @@ docker run --name=proxy-eds-cds-lds-filebased -d \
     -p 81:10000 \
     -v /root/:/etc/envoy \
     -v /root/envoy1.yaml:/etc/envoy/envoy.yaml \
-    envoyproxy/envoy:latest
+    envoyproxy/envoy:v1.31-latest
 ```{{execute}}
 
 **Note:** to avoid port conflicts, we exposed the ports with offset 1.

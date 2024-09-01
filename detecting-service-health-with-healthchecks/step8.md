@@ -11,7 +11,7 @@ Start Envoy with the command:
 docker run -d --name proxy2 -p 81:8080 \
     -v /root/:/etc/envoy \
     -v /root/envoy1.yaml:/etc/envoy/envoy.yaml \
-    envoyproxy/envoy
+    envoyproxy/envoy:v1.31-latest
 ```{{execute}}
 
 In a separate terminal window, launch a loop that will send requests. This will allow you to identify the changes in status.
