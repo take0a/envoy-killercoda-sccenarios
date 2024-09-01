@@ -39,7 +39,6 @@
   },
   "files": ["envoy.yaml"],
   "environment": {
-    "uilayout": "editor-terminal",
     "uieditorpath": "/root/envoy",
     "hideuieditortree": true
   },

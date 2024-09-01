@@ -39,9 +39,6 @@
     }
   },
   "files": ["envoy.yaml"],
-  "environment": {
-    "uilayout": "editor-terminal"
-  },
   "backend": {
     "imageid": "ubuntu"
   },

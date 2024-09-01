@@ -38,9 +38,6 @@
       ]
     }
   },
-  "environment": {
-    "uilayout": "editor-terminal"
-  },
   "backend": {
     "imageid": "ubuntu"
   },

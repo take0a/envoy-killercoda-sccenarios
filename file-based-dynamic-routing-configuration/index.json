@@ -56,9 +56,6 @@
     }
   },
   "files": ["eds.conf", "cds.conf", "lds.conf"],
-  "environment": {
-    "uilayout": "editor-terminal"
-  },
   "backend": {
     "imageid": "ubuntu"
   },
