@@ -2,7 +2,7 @@ Prometheus is an open-source monitoring solution that can be integrated with Env
 
 Now, let's see the prometheus configuration:
 
-`prometheus.yml`{{open}}
+`prometheus.yml`
 
 We can see that the prometheus config is using a job named  `envoy`.
 

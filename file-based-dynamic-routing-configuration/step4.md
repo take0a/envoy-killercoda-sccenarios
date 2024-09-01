@@ -1,8 +1,8 @@
-The contents of `eds.conf`{{open}} is a JSON definition of the same information defined within our static configuration. 
+The contents of `eds.conf` is a JSON definition of the same information defined within our static configuration. 
 
 ## Task
 
-Create `eds.conf`{{open}} file with the following content:
+Create `eds.conf` file with the following content:
 
 ```yaml
 {

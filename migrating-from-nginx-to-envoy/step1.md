@@ -1,4 +1,4 @@
-This scenario uses a crafted *nginx.conf* based on the full example from the [NGINX Wiki](https://www.nginx.com/resources/wiki/start/topics/examples/fullexample2/). You can view the configuration in the editor by opening _`nginx.conf`{{open}}_
+This scenario uses a crafted *nginx.conf* based on the full example from the [NGINX Wiki](https://www.nginx.com/resources/wiki/start/topics/examples/fullexample2/). You can view the configuration in the editor by opening _`nginx.conf`_
 
 NGINX configurations generally have three key elements:
 

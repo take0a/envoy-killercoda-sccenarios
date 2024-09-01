@@ -1,6 +1,6 @@
 With the configuration based on CDS, LDS and EDS, we can dynamically add a new cluster.
 
-Open the file `cds.conf`{{open}}.
+Open the file `cds.conf`.
 
 ## Add new cluster
 
@@ -39,7 +39,7 @@ We'll call this new cluster `newTargetCluster`. Replace the configuration with t
 ```{{copy}}
 
 You also need to create the `eds_cluster_config` file for this new cluster.
-Create the file `eds1.conf`{{open}} with this content:
+Create the file `eds1.conf` with this content:
 
 ```json
 {
@@ -73,7 +73,7 @@ Create the file `eds1.conf`{{open}} with this content:
 }
 ```{{copy}}
 
-And you can use this new cluster, in the listener that you previously configured. Open the file `lds.conf`{{open}}.
+And you can use this new cluster, in the listener that you previously configured. Open the file `lds.conf`.
 Replace the target cluster with the name of the new cluster `newTargetCluster`.
 
 ```json

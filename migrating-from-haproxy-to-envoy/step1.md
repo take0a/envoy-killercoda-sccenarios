@@ -1,4 +1,4 @@
-An example HA Proxy configuration can be viewed in the editor by opening `haproxy.cfg`{{open}}. HA Proxy configurations generally have four key elements:
+An example HA Proxy configuration can be viewed in the editor by opening `haproxy.cfg`. HA Proxy configurations generally have four key elements:
 
 1. Configuring the HA Proxy Server, logging structure and process-wide security and performance tunings that affect HAProxy at a low level. This is defined globally across all instances. See `global` section in `haproxy.cfg`.
 

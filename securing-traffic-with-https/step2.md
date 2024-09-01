@@ -4,7 +4,7 @@ In this case, the certificates are our self-signed generated in the first step.
 
 ## Add TLS Context to HTTPS Listener
 
-Open the `envoy.yaml`{{open}} configuration file. It contains an outline of the required HTTPS support. It has two listeners configured, one on port 8080 for HTTP traffic and another on 8443 for HTTPS traffic.
+Open the `envoy.yaml` configuration file. It contains an outline of the required HTTPS support. It has two listeners configured, one on port 8080 for HTTP traffic and another on 8443 for HTTPS traffic.
 
 The HTTPS listener has HTTP Connection Manager defined that will proxy incoming requests for `/service/1` and `/service/2` endpoints. This needs to be extended to include the required ***`tls_context`***  as shown below.
 
@@ -20,4 +20,4 @@ tls_context:
 
 Within the context, the certificate and key generated are defined. If we had multiple domains each with their own certificate, then multiple certificate chains would be defined.
 
-The completed configuration can be viewed at `envoy-completed.yaml`{{open}}.
+The completed configuration can be viewed at `envoy-completed.yaml`.

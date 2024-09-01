@@ -27,4 +27,4 @@ redirect:
 
 When a user visits the HTTP version of the site, Envoy Proxy matches the domain and path based on the filter configuration. This cause the user to be redirected to the HTTPS version of the site.
 
-This can be seen within the completed example at `envoy-completed.yaml`{{open}}.
+This can be seen within the completed example at `envoy-completed.yaml`.

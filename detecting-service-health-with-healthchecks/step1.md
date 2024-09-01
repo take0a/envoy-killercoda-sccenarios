@@ -1,4 +1,4 @@
-An initial envoy configuration file has been created at `envoy.yaml`{{open}}
+An initial envoy configuration file has been created at `envoy.yaml`
 
 This is configured to proxy all incoming requests for any domain to `172.18.0.3` and `172.18.0.4`.
 

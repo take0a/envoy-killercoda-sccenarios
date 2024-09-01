@@ -1,4 +1,4 @@
-With the configuration based on EDS, when the services need to be scaled up a new endpoint can be added to the `eds.conf`{{open}}. Envoy will then automatically include the changes.
+With the configuration based on EDS, when the services need to be scaled up a new endpoint can be added to the `eds.conf`. Envoy will then automatically include the changes.
 
 ## Task
 

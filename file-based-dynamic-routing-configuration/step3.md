@@ -34,4 +34,4 @@ Add the following cluster to the end of the Envoy configuration.
 
 ```{{copy}}
 
-The values for the upstream servers, such as `172.18.0.3` and `172.18.0.4`, will come from the file `eds.conf`{{open}}.
+The values for the upstream servers, such as `172.18.0.3` and `172.18.0.4`, will come from the file `eds.conf`.

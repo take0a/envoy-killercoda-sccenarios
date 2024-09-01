@@ -1,8 +1,8 @@
-A base Envoy configuration has been defined in the file `envoy.yaml`{{open}}
+A base Envoy configuration has been defined in the file `envoy.yaml`
 
 ## Task
 
-Open the file `envoy.yaml`{{open}} and review the configuration.
+Open the file `envoy.yaml` and review the configuration.
 
 >>Question: How many routes have been defined within the configuration?<<
 ( ) 1

@@ -1,6 +1,6 @@
 With EDS in place, it's possible to move to scale up the upstream clusters. If we wanted to be able to dynamically add new domains and clusters, the Cluster Discovery Service (CDS) API needs to be implemented. In the following steps, we are configuring the Cluster Discovery Service (CDS) and The Listener Discovery Service (LDS).
 
-You need to create a file to put the configuration for the clusters: `cds.conf`{{open}}.
+You need to create a file to put the configuration for the clusters: `cds.conf`.
 
 ```yaml
 {
@@ -21,7 +21,7 @@ You need to create a file to put the configuration for the clusters: `cds.conf`{
 }
 ```{{copy}}
 
-And also, you need to create a file to put the configuration for the listeners: `lds.conf`{{open}}.
+And also, you need to create a file to put the configuration for the listeners: `lds.conf`.
 
 ```yaml
 {
@@ -82,7 +82,7 @@ The content of files `cds.conf` and `lds.conf`  is a JSON definition of with the
 
 With the externalized the configuration of clusters and listeners, you need to modify your Envoy's configuration to make reference to these files. This can be accomplish changing all the `static_resources` for `dynamic_resources`.
 
-Open the Envoy configuration file `envoy1.yaml`{{open}}, and add the following configuration:
+Open the Envoy configuration file `envoy1.yaml`, and add the following configuration:
 
 ```yaml
 dynamic_resources:

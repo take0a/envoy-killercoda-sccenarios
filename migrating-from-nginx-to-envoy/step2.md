@@ -1,4 +1,4 @@
-The first part of the _`nginx.conf`{{open}}_ defines some of the NGINX internals that should be configured.
+The first part of the _`nginx.conf`_ defines some of the NGINX internals that should be configured.
 
 ## Worker Connections
 

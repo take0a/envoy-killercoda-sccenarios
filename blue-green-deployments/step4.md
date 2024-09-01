@@ -6,7 +6,7 @@ By rolling out traffic in a phased motion it's possible to check that no new bug
 
 ## Task
 
-Replace the string _#TODO Service3_ within the `envoy.yaml`{{open}} file with the configuration snippet below.
+Replace the string _#TODO Service3_ within the `envoy.yaml` file with the configuration snippet below.
 
 ```yaml
 - match:

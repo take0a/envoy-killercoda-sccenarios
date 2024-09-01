@@ -2,7 +2,7 @@ Unlike active health checking, *Outlier Detection* (sometimes called passive hea
 
 Like health checks, outlier detection is configured per-cluster. This configuration removes a host for 30 seconds when it returns 3 consecutive 5xx errors:
 
-Open the file `envoy1.yaml`{{open}} and add the following configuration:
+Open the file `envoy1.yaml` and add the following configuration:
 
 ```
     outlier_detection:
