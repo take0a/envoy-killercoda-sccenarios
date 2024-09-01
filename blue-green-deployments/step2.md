@@ -10,7 +10,7 @@ Within having the additional match before other definitions for the prefix, the 
 
 The configuration below adds a new route for `/service/2` which will only be accessible if the HTTP Header `x-canary-version` has been defined.
 
-<pre class="file" data-filename="envoy.yaml" data-target="insert" data-marker="#TODO Service2">
+```yaml
 - match:
                   prefix: "/service/2"
                   headers:
@@ -18,6 +18,6 @@ The configuration below adds a new route for `/service/2` which will only be acc
                     exact_match: "service2a"
                 route:
                   cluster: service2a
-</pre>
+```{{copy}}
 
 Envoy supports a number of different matching patterns for headers that are included within the [HeaderMatcher documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v2/api/v2/route/route.proto.html?highlight=strip%20headers#route-headermatcher).

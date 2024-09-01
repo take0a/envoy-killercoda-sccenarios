@@ -2,7 +2,7 @@ Envoy provides an administration view, allowing you to view configuration, stats
 
 The admin can be defined by adding an additional resource definition, where the port for the admin view is defined. The port should not conflict with other Listener configurations.
 
-```
+```yaml
 admin:
   access_log_path: /tmp/admin_access.log
   address:

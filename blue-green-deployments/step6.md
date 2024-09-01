@@ -1,6 +1,6 @@
 To rollout all the traffic to the new service, the weight of the cluster should be changed to 100. The old cluster definition can be removed. 
 
-<pre class="file" data-target="clipboard">
+```yaml
               - match:
                   prefix: "/service/3"
                 route:
@@ -8,7 +8,7 @@ To rollout all the traffic to the new service, the weight of the cluster should 
                     clusters:
                     - name: service3b
                       weight: 100
-</pre>
+```{{copy}}
 
 ## Restart Proxy
 

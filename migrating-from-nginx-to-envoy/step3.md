@@ -1,10 +1,10 @@
 Within the HTTP configuration block, the NGINX configuration specifies to listen on port 8080 and respond to incoming requests for the domains _one.example.com_ and _www.one.example.com_.
 
-<pre class="file">
+```
  server {
     listen        80;
     server_name   one.example.com  www.one.example.com;
-</pre>
+```
 
 Within Envoy, this is managed by Listeners.
 
@@ -16,12 +16,12 @@ The snippet below will create a new listener and bind it to port 8080. The confi
 
 Envoy Proxy uses YAML notation for its configuration. If you are not familiarized with this notation can see this [link](https://yaml.org/spec/1.2/spec.html).
 
-<pre class="file" data-filename="envoy.yaml" data-target="replace">
+```yaml
 static_resources:
   listeners:
   - name: listener_0
     address:
       socket_address: { address: 0.0.0.0, port_value: 8080 }
-</pre>
+```{{copy}}
 
 There is no need to define the *server_name* as Envoy Proxy filters will handle this.

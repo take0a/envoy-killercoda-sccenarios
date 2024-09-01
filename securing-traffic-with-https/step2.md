@@ -8,7 +8,7 @@ Open the `envoy.yaml`{{open}} configuration file. It contains an outline of the 
 
 The HTTPS listener has HTTP Connection Manager defined that will proxy incoming requests for `/service/1` and `/service/2` endpoints. This needs to be extended to include the required ***`tls_context`***  as shown below.
 
-<pre class="file" data-filename="envoy.yaml" data-target="insert" data-marker="#TODO:TLS-Context">
+```yaml
 tls_context:
         common_tls_context:
           tls_certificates:
@@ -16,7 +16,7 @@ tls_context:
                 filename: "/etc/envoy/certs/example-com.crt"
               private_key:
                 filename: "/etc/envoy/certs/example-com.key"
-</pre>
+```{{copy}}
 
 Within the context, the certificate and key generated are defined. If we had multiple domains each with their own certificate, then multiple certificate chains would be defined.
 

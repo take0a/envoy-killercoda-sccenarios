@@ -6,7 +6,7 @@ Within our HTTP configuration, as part of the filter match for the domain, a fla
 
 Our standard Envoy Proxy configuration looks like below.
 
-<pre class="file">
+```yaml
 route_config:
   virtual_hosts:
   - name: backend
@@ -15,15 +15,15 @@ route_config:
   routes:
   - match:
       prefix: "/"
-</pre>
+```
 
 This needs to be extended to include the field HTTPS Redirect.
 
-<pre class="file" data-filename="envoy.yaml" data-target="insert" data-marker="#TODO:HTTP-Redirect">
+```yaml
 redirect:
                   path_redirect: "/"
                   https_redirect: true
-</pre>
+```{{copy}}
 
 When a user visits the HTTP version of the site, Envoy Proxy matches the domain and path based on the filter configuration. This cause the user to be redirected to the HTTPS version of the site.
 

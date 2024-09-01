@@ -2,7 +2,7 @@ With EDS in place, it's possible to move to scale up the upstream clusters. If w
 
 You need to create a file to put the configuration for the clusters: `cds.conf`{{open}}.
 
-<pre class="file" data-filename="cds.conf" data-target="replace">
+```yaml
 {
   "version_info": "0",
   "resources": [{
@@ -19,11 +19,11 @@ You need to create a file to put the configuration for the clusters: `cds.conf`{
 			}
   }]
 }
-</pre>
+```{{copy}}
 
 And also, you need to create a file to put the configuration for the listeners: `lds.conf`{{open}}.
 
-<pre class="file" data-filename="lds.conf" data-target="replace">
+```yaml
 {
     "version_info": "0",
     "resources": [{
@@ -76,7 +76,7 @@ And also, you need to create a file to put the configuration for the listeners: 
             ]
     }]
 }
-</pre>
+```{{copy}}
 
 The content of files `cds.conf` and `lds.conf`  is a JSON definition of with the same information defined within our static configuration.
 
@@ -84,13 +84,13 @@ With the externalized the configuration of clusters and listeners, you need to m
 
 Open the Envoy configuration file `envoy1.yaml`{{open}}, and add the following configuration:
 
-<pre class="file" data-filename="envoy1.yaml" data-target="append">
+```yaml
 dynamic_resources:
   cds_config:
     path: "/etc/envoy/cds.conf"
   lds_config:
     path: "/etc/envoy/lds.conf"
-</pre>
+```{{copy}}
 
 After that, launch the container with the following command:
 

@@ -4,13 +4,13 @@ The first part of the _`nginx.conf`{{open}}_ defines some of the NGINX internals
 
 The configuration below focuses on defining the number of worker processes and connections. This indicates how NGINX will scale to handle demand.
 
-<pre>
+```
 worker_processes  2;
 
 events {
   worker_connections   2000;
 }
-</pre>
+```
 
 Envoy Proxy manages the worker processes and connections differently.
 

@@ -1,6 +1,6 @@
 When a request comes into NGINX, a location block defines how to process and where to forward the traffic. In the following snippet, all the traffic to the site is proxied to an upstream cluster called _`targetCluster`_. The upstream cluster defines the nodes that should process the request. We will discuss this in the next step.
 
-<pre class="file">
+```
 location / {
     proxy_pass         http://targetCluster/;
     proxy_redirect     off;
@@ -8,7 +8,7 @@ location / {
     proxy_set_header   Host             $host;
     proxy_set_header   X-Real-IP        $remote_addr;
 }
-</pre>
+```
 
 Within Envoy, this is managed by Filters.
 
@@ -16,7 +16,7 @@ Within Envoy, this is managed by Filters.
 
 For the static configuration, the filters define how to handle incoming requests. In this case, we are setting the filters that match the *server_names* in the previous step. When incoming requests are received that match the defined domains and routes, the traffic is forwarded to the cluster. This is the equivalent of the upstream NGINX configuration.
 
-<pre class="file" data-filename="envoy.yaml">
+```yaml
     filter_chains:
     - filters:
       - name: envoy.http_connection_manager
@@ -37,7 +37,7 @@ For the static configuration, the filters define how to handle incoming requests
                   cluster: targetCluster
           http_filters:
           - name: envoy.router
-</pre>
+```
 
 The name *envoy.http_connection_manager* is a built-in filter within Envoy Proxy. Other filters include _Redis_, _Mongo_, _TCP_. You can find the complete list in the [documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v2/api/v2/listener/listener.proto#envoy-api-file-envoy-api-v2-listener-listener-proto).
 

@@ -1,6 +1,6 @@
 The final part of the HAProxy configures where to store log files and the user who owns the process.
 
-<pre class="file">
+```
 global
         log /dev/log    local0
         log /dev/log    local1 notice
@@ -13,21 +13,21 @@ defaults
         mode    http
         option  httplog
         option  dontlognull
-</pre>
+```
 
 The logs for Envoy Proxy follow a cloud-native approach, where the application logs are outputted to *`stdout`* and *`stderr`*.
 
 User access logs are disabled by default and need to be configured. To enable access logs for HTTP requests, include an *`access_log`* configuration for the HTTP Connection Manager. The path can be either a device, such as stdout, or a file on disk depending on your requirements.
 
-<pre class="file" data-target="clipboard">
+```yaml
 access_log:
 - name: envoy.file_access_log
   config:
     path: "/dev/stdout"
-</pre>
+```{{copy}}
 
 The results should look like this:
-<pre class="file">
+```yaml
       - name: envoy.http_connection_manager
         config:
           codec_type: auto
@@ -37,7 +37,7 @@ The results should look like this:
             config:
               path: "/dev/stdout"
           route_config:
-</pre>
+```
 
 By default, Envoy has a Format String that includes details of the HTTP request.
 
@@ -52,22 +52,22 @@ The result of this Format String is:
 
 The contents of the output can be customised by setting the format field, for example:
 
-<pre class="file">
+```yaml
 access_log:
 - name: envoy.file_access_log
   config:
     path: "/dev/stdout"
     format: "[%START_TIME%] "%REQ(:METHOD)% %REQ(X-ENVOY-ORIGINAL-PATH?:PATH)% %PROTOCOL%" %RESPONSE_CODE% %RESP(X-ENVOY-UPSTREAM-SERVICE-TIME)% "%REQ(X-REQUEST-ID)%" "%REQ(:AUTHORITY)%" "%UPSTREAM_HOST%"\n"
-</pre>
+```
 
 The log line can also be outputted as JSON by setting the *json_format* field, for example:
-<pre class="file">
+```yaml
 access_log:
 - name: envoy.file_access_log
   config:
     path: "/dev/stdout"
     json_format: {"protocol": "%PROTOCOL%", "duration": "%DURATION%", "request_method": "%REQ(:METHOD)%"}
-</pre>
+```
 
 More information on Envoy's logging approach can be found [here](https://www.envoyproxy.io/docs/envoy/latest/configuration/access_log#config-access-log-format-dictionaries).
 

@@ -4,16 +4,16 @@ When users make a request, the access logs are optional and disabled by default.
 
 The following configuration will pipe all access logs to *`stdout`*. Copy the snippet into the config section for the connection manager:
 
-<pre class="file" data-target="clipboard">
+```yaml
 access_log:
 - name: envoy.file_access_log
   config:
     path: "/dev/stdout"
-</pre>
+```{{copy}}
 
 The results should look like this:
 
-<pre class="file">
+```yaml
       - name: envoy.http_connection_manager
         config:
           codec_type: auto
@@ -23,7 +23,7 @@ The results should look like this:
             config:
               path: "/dev/stdout"
           route_config:
-</pre>
+```
 
 By default, Envoy has a format string that includes details of the HTTP request:
 
@@ -38,22 +38,22 @@ The result of this format string is:
 
 The contents of the output can be customised by setting the format field. For example:
 
-<pre class="file">
+```yaml
 access_log:
 - name: envoy.file_access_log
   config:
     path: "/dev/stdout"
     format: "[%START_TIME%] "%REQ(:METHOD)% %REQ(X-ENVOY-ORIGINAL-PATH?:PATH)% %PROTOCOL%" %RESPONSE_CODE% %RESP(X-ENVOY-UPSTREAM-SERVICE-TIME)% "%REQ(X-REQUEST-ID)%" "%REQ(:AUTHORITY)%" "%UPSTREAM_HOST%"\n"
-</pre>
+```
 
 The log line can also be outputted as JSON by setting the *json_format* field. For example:
-<pre class="file">
+```yaml
 access_log:
 - name: envoy.file_access_log
   config:
     path: "/dev/stdout"
     json_format: {"protocol": "%PROTOCOL%", "duration": "%DURATION%", "request_method": "%REQ(:METHOD)%"}
-</pre>
+```
 
 For further information on Envoy's logging approach, visit https://www.envoyproxy.io/docs/envoy/latest/configuration/access_log#config-access-log-format-dictionaries
 

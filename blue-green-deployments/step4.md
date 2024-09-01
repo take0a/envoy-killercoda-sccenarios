@@ -8,7 +8,7 @@ By rolling out traffic in a phased motion it's possible to check that no new bug
 
 Replace the string _#TODO Service3_ within the `envoy.yaml`{{open}} file with the configuration snippet below.
 
-<pre class="file" data-filename="envoy.yaml" data-target="insert" data-marker="#TODO Service3">
+```yaml
 - match:
                   prefix: "/service/3"
                 route:
@@ -18,6 +18,6 @@ Replace the string _#TODO Service3_ within the `envoy.yaml`{{open}} file with th
                       weight: 80
                     - name: service3b
                       weight: 20
-</pre>
+```{{copy}}
 
 The snippet adds the new route with an 80/20 weighting between two different clusters. Within the configuration, the clusters for **service3a** and **service3b** have already been defined. The results should be responses indicating a V2 from `curl 172.18.0.6`{{execute}} and V3 response from `curl 172.18.0.7`{{execute}}.

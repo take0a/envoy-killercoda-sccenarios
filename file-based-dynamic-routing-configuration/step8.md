@@ -6,7 +6,7 @@ Open the file `cds.conf`{{open}}.
 
 We'll call this new cluster `newTargetCluster`. Replace the configuration with the following to add a new cluster.
 
-<pre class="file" data-filename="cds.conf" data-target="replace">
+```json
 {
   "version_info": "0",
   "resources": [{
@@ -36,12 +36,12 @@ We'll call this new cluster `newTargetCluster`. Replace the configuration with t
 			}
   }]
 }
-</pre>
+```{{copy}}
 
 You also need to create the `eds_cluster_config` file for this new cluster.
 Create the file `eds1.conf`{{open}} with this content:
 
-<pre class="file" data-filename="eds1.conf" data-target="replace">
+```json
 {
   "version_info": "0",
   "resources": [{
@@ -71,20 +71,20 @@ Create the file `eds1.conf`{{open}} with this content:
     }]
   }]
 }
-</pre>
+```{{copy}}
 
 And you can use this new cluster, in the listener that you previously configured. Open the file `lds.conf`{{open}}.
 Replace the target cluster with the name of the new cluster `newTargetCluster`.
 
-<pre class="file" data-target="clipboard">
+```json
   "route": {
       "cluster": "newTargetCluster"
   }
-</pre>
+```{{copy}}
 
 The configuration of `lds.conf` should look like:
 
-<pre class="file">
+```json
 ...
             "filter_chains": [
                 {
@@ -126,7 +126,7 @@ The configuration of `lds.conf` should look like:
                 }
             ]
 ...
-</pre>
+```
 
 Start two HTTP servers to handle the incoming requests for the new cluster
 `docker run -d katacoda/docker-http-server; docker run -d katacoda/docker-http-server;`{{execute}}

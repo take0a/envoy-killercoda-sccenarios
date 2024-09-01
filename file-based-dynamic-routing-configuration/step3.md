@@ -2,7 +2,7 @@ The EDS configuration is defined to allow the upstream clusters to be controlled
 
 Within the static configuration, this was defined as:
 
-<pre class="file">
+```yaml
   clusters:
   - name: targetCluster
     connect_timeout: 0.25s
@@ -13,7 +13,7 @@ Within the static configuration, this was defined as:
       { socket_address: { address: 172.18.0.3, port_value: 80 }},
       { socket_address: { address: 172.18.0.4, port_value: 80 }}
     ]
-</pre>
+```{{copy}}
 
 ## Convert to EDS
 
@@ -21,7 +21,7 @@ To convert this to EDS based a **eds_cluster_config** is required and changing t
 
 Add the following cluster to the end of the Envoy configuration.
 
-<pre class="file" data-filename="envoy.yaml" data-target="append">
+```yaml
   clusters:
   - name: targetCluster
     connect_timeout: 0.25s
@@ -32,6 +32,6 @@ Add the following cluster to the end of the Envoy configuration.
       eds_config:
         path: '/etc/envoy/eds.conf'
 
-</pre>
+```{{copy}}
 
 The values for the upstream servers, such as `172.18.0.3` and `172.18.0.4`, will come from the file `eds.conf`{{open}}.

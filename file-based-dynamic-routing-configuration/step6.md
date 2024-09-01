@@ -4,7 +4,7 @@ With the configuration based on EDS, when the services need to be scaled up a ne
 
 Replace the configuration with the following to add a new endpoint to the cluster.
 
-<pre class="file" data-filename="eds.conf" data-target="replace">
+```yaml
 {
   "version_info": "0",
   "resources": [{
@@ -34,7 +34,7 @@ Replace the configuration with the following to add a new endpoint to the cluste
     }]
   }]
 }
-</pre>
+```{{copy}}
 
 Based on how Docker handles file inode tracking, sometimes the filesystem change isn't triggered and detected. Force the change with the command `mv eds.conf tmp; mv tmp eds.conf`{{execute}}
 

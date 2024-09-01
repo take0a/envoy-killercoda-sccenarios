@@ -1,6 +1,6 @@
 A health check is added to the cluster configuration within the Envoy configuration. The following configuration will use a `/health` endpoint within each of the nodes defined to determine if it is healthy or not, based on the HTTP Status returned.
 
-<pre class="file" data-filename="envoy.yaml" data-target="append">
+```yaml
     health_checks:
       - timeout: 1s
         interval: 10s
@@ -9,7 +9,7 @@ A health check is added to the cluster configuration within the Envoy configurat
         healthy_threshold: 1
         http_health_check:
           path: "/health"
-</pre>
+```{{copy}}
 
 The key fields are:
 

@@ -4,11 +4,11 @@ Like health checks, outlier detection is configured per-cluster. This configurat
 
 Open the file `envoy1.yaml`{{open}} and add the following configuration:
 
-<pre class="file" data-filename="envoy1.yaml" data-target="append">
+```
     outlier_detection:
         consecutive_5xx: "3"
         base_ejection_time: "30s"
-</pre>
+```{{copy}}
 
 The key fields are:
 

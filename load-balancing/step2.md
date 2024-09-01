@@ -5,7 +5,7 @@ The optional load balancing weight of the upstream host; at least 1. Envoy uses 
 Open envoy configuration file `envoy/envoy.yaml`{{open}}
 
 Add to envoy's configuration the definition of `load_assignment`
-<pre class="file" data-filename="envoy.yaml" data-target="append">
+```yaml
 load_assignment:
   cluster_name: targetCluster
   endpoints:
@@ -22,7 +22,7 @@ load_assignment:
           socket_address:
             address: 172.18.0.4
             port_value: 80
-</pre>
+```{{copy}}
 
 
 Start the envoy proxy with the defined configuration using this command:

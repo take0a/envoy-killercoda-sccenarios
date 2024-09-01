@@ -18,7 +18,7 @@ The Envoy proxy configuration is defined in: `examples/front-proxy/envoy.yaml`{{
 
 As described in the first step, the configuration starts by defining a set of *static_resources*. The routes match based on the URL of the request.
 
-```
+```yaml
 routes:
     - match:
         prefix: "/service/1"

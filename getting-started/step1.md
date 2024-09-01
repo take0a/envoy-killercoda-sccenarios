@@ -6,7 +6,7 @@ Envoy also supports Dynamic Configuration. This allows the settings to be discov
 
 The first line of the Envoy configuration defines the API configuration being used. In this case, we're configuring the Static API, so the first line should be *static_resources*. Copy the snippet to the editor.
 
-```
+```yaml
 static_resources:
 ```{{copy}}
 
@@ -16,7 +16,7 @@ The beginning of the configuration defines the _Listeners_. A Listener is the ne
 
 Below is the configuration to define this setup. Copy the snippet to the editor.
 
-```
+```yaml
   listeners:
   - name: listener_0
     address:
@@ -34,7 +34,7 @@ In this example, we'll proxy all traffic to Google.com (thanks Google!). The res
 
 Filtering is defined using *filter_chains*. The aim of each _filter_ is to find a match on the incoming request, to match it to the target destination. Copy the snippet to the editor.
 
-```
+```yaml
     filter_chains:
     - filters:
       - name: envoy.filters.network.http_connection_manager
@@ -78,7 +78,7 @@ When a request matches a filter, the request is passed onto a cluster. The clust
 
 Copy the cluster implementation to complete the configuration:
 
-```
+```yaml
   clusters:
   - name: service_google
     connect_timeout: 30s
@@ -114,7 +114,7 @@ Copy the cluster implementation to complete the configuration:
 
 Finally, an admin section is required. The admin section is explained in more detail in the following steps.
 
-```
+```yaml
 admin:
   address:
     socket_address:
