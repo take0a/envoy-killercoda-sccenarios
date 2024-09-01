@@ -17,12 +17,12 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
     }
   ]
 }' http://localhost:8080/edsservice/myservice
-```{{execute T5}}
+```{{execute}}
 
 ## Check client connectivity via envoy
 Since we already started the upstream service above, you can connect to it via envoy:
 
-```curl -i http://localhost```{{execute T5}}
+```curl -i http://localhost```{{execute}}
 
 You should see something similar to:
 
@@ -45,7 +45,7 @@ for i in 8082 8083 8084 8085
       docker run -d -e EDS_SERVER_PORT=$i katacoda/docker-http-server:v4;
       sleep .5
 done
-```{{execute T5}}
+```{{execute}}
 
 And these nodes should be registered in the eds_cluster:
 
@@ -99,11 +99,11 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
         }
     ]
     }' http://localhost:8080/edsservice/myservice
-```{{execute T5}}
+```{{execute}}
 
 
 Now you can verify that the traffic is balanced with all the nodes registered with the following command:
 
-`while true; do curl http://localhost; sleep .5; printf '\n'; done`{{execute T6}}
+`while true; do curl http://localhost; sleep .5; printf '\n'; done`{{execute}}
 
 You will see different responses according to the service that processed the request.

@@ -4,11 +4,11 @@ We've dynamically added endpoints. Now let's remove them by the EDS server's cus
 curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
   "hosts": [  ]
 }' http://localhost:8080/edsservice/myservice
-```{{execute T7}}
+```{{execute}}
 
 Now, if you try to send a request to Envoy, you will see no healthy upstream message from envoy:
 
-```curl -v http://localhost```{{execute T7}}
+```curl -v http://localhost```{{execute}}
 
 ```
 HTTP/1.1 503 Service Unavailable

@@ -52,17 +52,17 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
         }
     ]
     }' http://localhost:8080/edsservice/myservice
-```{{execute T5}}
+```{{execute}}
 
 Verify if the nodes are responding with this command:
 
-`while true; do curl http://localhost; sleep .5; printf '\n'; done`{{execute T6}}
+`while true; do curl http://localhost; sleep .5; printf '\n'; done`{{execute}}
 
 And then, with this command you can stop and delete the container where the EDS server is running:
 
 ```
 docker ps -a | awk '{ print $1,$2 }' | grep katacoda/eds_server  | awk '{print $1 }' | xargs -I {} docker stop {};
 docker ps -a | awk '{ print $1,$2 }' | grep katacoda/eds_server  | awk '{print $1 }' | xargs -I {} docker rm {}
-```{{execute T7}}
+```{{execute}}
 
 As you can see in the other terminal, Envoy continues response to the requests even when it's disconnected from EDS server.

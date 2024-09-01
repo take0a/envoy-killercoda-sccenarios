@@ -1,6 +1,6 @@
 In case that you perform a request using a non existing domain:
 
-`curl localhost -H "Host: missing.example.com" -i`{{execute T1}}
+`curl localhost -H "Host: missing.example.com" -i`{{execute}}
 
 You would have an error similar to:
 

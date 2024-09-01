@@ -10,21 +10,21 @@ Envoy Proxy takes a cloud-native approach to managing who the process owner is. 
 
 Below will launch Envoy Proxy via a Docker Container on the host. The command exposes Envoy to listen to incoming requests on port 80. However, as specified in the listener configuration, Envoy Proxy is listening to incoming traffic on port 8080. This allows the process to run as a low privilege user.
 
-`docker run --name proxy1 -p 80:8080 --user 1000:1000 -v /root/envoy.yaml:/etc/envoy/envoy.yaml envoyproxy/envoy`{{execute T2}}
+`docker run --name proxy1 -p 80:8080 --user 1000:1000 -v /root/envoy.yaml:/etc/envoy/envoy.yaml envoyproxy/envoy`{{execute}}
 
 ## Testing
 
 With the Proxy started, tests can now be made and processed. The following cURL command issues a request to localhost on port 80.
 
-`curl localhost -IL`{{execute T1}}
+`curl localhost -IL`{{execute}}
 
 The HTTP request will result in a _503_ error because the upstream connections are not running and unavailable. As such, Envoy Proxy has no available target destinations for the request. The following command will launch a series of HTTP services that match the configuration defined for Envoy.
 
-`docker run -d katacoda/docker-http-server; docker run -d katacoda/docker-http-server;`{{execute T1}}
+`docker run -d katacoda/docker-http-server; docker run -d katacoda/docker-http-server;`{{execute}}
 
 With the services available, Envoy can successfully proxy traffic to the target destination.
 
-`curl localhost -i`{{execute T1}}
+`curl localhost -i`{{execute}}
 
 You should see a response indicating which Docker Container processed the request. Within the Envoy Proxy logs you should also see the access line outputted.
 

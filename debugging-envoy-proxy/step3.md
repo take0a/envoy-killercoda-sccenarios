@@ -4,7 +4,7 @@ Make the nodes unhealthy:
 
 If the upstream host is unresponsive when you run a command like:
 
-`curl localhost -H "Host: one.example.com" -i`{{execute T1}}
+`curl localhost -H "Host: one.example.com" -i`{{execute}}
 
 You would get a response similar to:
 

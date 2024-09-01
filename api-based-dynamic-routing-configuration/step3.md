@@ -2,10 +2,10 @@ Now you have to start the upstream cluster. For this we are gonna use one exampl
 
 ```
 docker run -p 8081:8081 -d -e EDS_SERVER_PORT='8081' katacoda/docker-http-server:v4
-```{{execute T2}}
+```{{execute}}
 
 You could test your upstream service executing the following command:
-```curl http://localhost:8081 -i```{{execute T3}}
+```curl http://localhost:8081 -i```{{execute}}
 
 The response of the request should be something similar to:
 

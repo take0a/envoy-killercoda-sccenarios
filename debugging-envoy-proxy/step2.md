@@ -1,7 +1,7 @@
 All envoy logs are redirected to stdout and stderr.
 
 To see the container id of your envoy proxy, you can use the following command:
-`docker ps`{{execute T1}}
+`docker ps`{{execute}}
 
 So, using the container id, you can see the logs of your server using a command similar to:
 `docker logs 3f94fcd0fdd9`

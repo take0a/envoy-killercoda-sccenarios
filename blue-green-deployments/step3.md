@@ -1,14 +1,14 @@
 With the configuration created, start Envoy with the command below:
 
-`docker run -d --name proxy1 -p 80:8080 -v /root/:/etc/envoy envoyproxy/envoy`{{execute T1}}
+`docker run -d --name proxy1 -p 80:8080 -v /root/:/etc/envoy envoyproxy/envoy`{{execute}}
 
 The configuration has hardcoded a series of IP addresses that are the destinations of the traffic. The command below will start a series of HTTP servers. Some of the HTTP servers will return different responses based on their version. Click the command to launch it within the terminal.
 
-`docker run -d katacoda/docker-http-server:v1; docker run -d katacoda/docker-http-server:v1; docker run -d katacoda/docker-http-server:v2; docker run -d katacoda/docker-http-server:v2; docker run -d katacoda/docker-http-server:v3`{{execute T1}}
+`docker run -d katacoda/docker-http-server:v1; docker run -d katacoda/docker-http-server:v1; docker run -d katacoda/docker-http-server:v2; docker run -d katacoda/docker-http-server:v2; docker run -d katacoda/docker-http-server:v3`{{execute}}
 
 It's possible to compare the Envoy cluster configuration with the IP address and Container Hostname with the command:
 
-`docker ps -q | xargs -n 1 docker inspect --format '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}} {{ .Config.Hostname }} {{ .Config.Image }}' | sed 's/ \// /'`{{execute T1}}
+`docker ps -q | xargs -n 1 docker inspect --format '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}} {{ .Config.Hostname }} {{ .Config.Image }}' | sed 's/ \// /'`{{execute}}
 
 ## Test via HTTP Headers
 

@@ -4,7 +4,7 @@ Now you have to start the eds_server example with the following command:
 
 ```
 docker run -p 8080:8080 -d katacoda/eds_server;
-```{{execute T4}}
+```{{execute}}
 
 After the command runs and finish pull the image, you should see the following output on SDS stdout indicating an inbound Envoy discovery request:
 
@@ -14,4 +14,4 @@ Inbound v2 request for discovery.  POST payload: {u'node': {u'build_version': u'
 ```
 You can verify that envoy doesn't know anything about this endpoint by attempting to connect through to it:
 
-```curl -v http://localhost```{{execute T5}}
+```curl -v http://localhost```{{execute}}
