@@ -42,7 +42,8 @@
     "assets": {
         "host01": [
             {"file": "nginx.conf", "target": "/root/"},
-            {"file": "completed.yaml", "target": "/root/"}
+            {"file": "completed.yaml", "target": "/root/"},
+            {"file": "envoy.yaml", "target": "/root/"}
         ]
     }
   },
