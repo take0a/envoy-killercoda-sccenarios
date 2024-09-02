@@ -39,13 +39,13 @@ static_resources:
         - endpoint:
             address:
               socket_address:
-                address: 172.18.0.3
-                port_value: 80
+                address: 127.0.0.1
+                port_value: 8008
         - endpoint:
             address:
               socket_address:
-                address: 172.18.0.4
-                port_value: 80
+                address: 127.0.0.1
+                port_value: 8009
 
 admin:
   access_log_path: /tmp/admin_access.log
