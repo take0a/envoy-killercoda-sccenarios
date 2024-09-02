@@ -21,11 +21,21 @@ The equivalent of upstream is defined as Clusters. In this case, the hosts that 
     type: STRICT_DNS
     dns_lookup_family: V4_ONLY
     lb_policy: ROUND_ROBIN
-    hosts: [
-      { socket_address: { address: 172.18.0.3, port_value: 80 }},
-      { socket_address: { address: 172.18.0.4, port_value: 80 }}
-    ]
-```
+    load_assignment:
+      cluster_name: targetCluster
+      endpoints:
+      - lb_endpoints:
+        - endpoint:
+            address:
+              socket_address:
+                address: 172.30.1.2
+                port_value: 8008
+        - endpoint:
+            address:
+              socket_address:
+                address: 172.30.1.2
+                port_value: 8009
+```{{copy}}
 
 When using *STRICT_DNS* service discovery, Envoy will continuously and asynchronously resolve the specified DNS targets. Each returned IP address in the DNS result will be considered an explicit host in the upstream cluster. This means that if the query returns two IP addresses, Envoy will assume the cluster has two hosts, and both should be load balanced to. If a host is removed from the result, Envoy assumes it no longer exists and will drain traffic from any existing connection pools.
 

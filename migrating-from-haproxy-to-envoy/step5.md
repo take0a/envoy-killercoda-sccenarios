@@ -20,7 +20,7 @@ With the Proxy started, tests can now be made and processed. The following cURL 
 
 The HTTP request will result in a _503_ error because the upstream connections are not running and unavailable. As such, Envoy Proxy has no available target destinations for the request. The following command will launch a series of HTTP services that match the configuration defined for Envoy.
 
-`docker run -d katacoda/docker-http-server; docker run -d katacoda/docker-http-server;`{{execute}}
+`docker run -d -p 8008:80 nginx:alpine; docker run -d -p 8009:80 nginx:alpine;`{{execute}}
 
 With the services available, Envoy can successfully proxy traffic to the target destination.
 

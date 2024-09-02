@@ -6,22 +6,23 @@ The following configuration will pipe all access logs to *`stdout`*. Copy the sn
 
 ```yaml
 access_log:
-- name: envoy.file_access_log
-  config:
-    path: "/dev/stdout"
-```{{copy}}
+- name: envoy.access_loggers.stdout
+  typed_config:
+    "@type": type.googleapis.com/envoy.extensions.access_loggers.stream.v3.StdoutAccessLog
+```
 
 The results should look like this:
 
 ```yaml
-      - name: envoy.http_connection_manager
-        config:
+      - name: envoy.filters.network.http_connection_manager
+        typed_config:
+          "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
           codec_type: auto
           stat_prefix: ingress_http
           access_log:
-          - name: envoy.file_access_log
-            config:
-              path: "/dev/stdout"
+          - name: envoy.access_loggers.stdout
+            typed_config:
+              "@type": type.googleapis.com/envoy.extensions.access_loggers.stream.v3.StdoutAccessLog
           route_config:
 ```
 
@@ -40,18 +41,18 @@ The contents of the output can be customised by setting the format field. For ex
 
 ```yaml
 access_log:
-- name: envoy.file_access_log
-  config:
-    path: "/dev/stdout"
-    format: "[%START_TIME%] "%REQ(:METHOD)% %REQ(X-ENVOY-ORIGINAL-PATH?:PATH)% %PROTOCOL%" %RESPONSE_CODE% %RESP(X-ENVOY-UPSTREAM-SERVICE-TIME)% "%REQ(X-REQUEST-ID)%" "%REQ(:AUTHORITY)%" "%UPSTREAM_HOST%"\n"
+- name: envoy.access_loggers.stdout
+  typed_config:
+    "@type": type.googleapis.com/envoy.extensions.access_loggers.stream.v3.StdoutAccessLog
+    text_format: "[%START_TIME%] "%REQ(:METHOD)% %REQ(X-ENVOY-ORIGINAL-PATH?:PATH)% %PROTOCOL%" %RESPONSE_CODE% %RESP(X-ENVOY-UPSTREAM-SERVICE-TIME)% "%REQ(X-REQUEST-ID)%" "%REQ(:AUTHORITY)%" "%UPSTREAM_HOST%"\n"
 ```
 
 The log line can also be outputted as JSON by setting the *json_format* field. For example:
 ```yaml
 access_log:
-- name: envoy.file_access_log
-  config:
-    path: "/dev/stdout"
+- name: envoy.access_loggers.stdout
+  typed_config:
+    "@type": type.googleapis.com/envoy.extensions.access_loggers.stream.v3.StdoutAccessLog
     json_format: {"protocol": "%PROTOCOL%", "duration": "%DURATION%", "request_method": "%REQ(:METHOD)%"}
 ```
 

@@ -18,8 +18,9 @@ For the static configuration, the filters define how to handle incoming requests
 ```yaml
     filter_chains:
     - filters:
-      - name: envoy.http_connection_manager
-        config:
+      - name: envoy.filters.network.http_connection_manager
+        typed_config:
+          "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
           codec_type: auto
           stat_prefix: ingress_http
           route_config:
@@ -34,8 +35,10 @@ For the static configuration, the filters define how to handle incoming requests
                 route:
                   cluster: nodes
           http_filters:
-          - name: envoy.router
-```
+            - name: envoy.filters.http.router
+              typed_config:
+                "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
+```{{copy}}
 
 The name *envoy.http_connection_manager* is a built-in filter within Envoy Proxy. Other filters include _Redis_, _Mongo_, _TCP_. You can find the complete list in the [documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/listener/v3/listener.proto#config-listener-v3-listener).
 
@@ -48,10 +51,20 @@ The filter controls how Envoy matches incoming HTTP requests and which cluster s
     type: STRICT_DNS
     dns_lookup_family: V4_ONLY
     lb_policy: ROUND_ROBIN
-    hosts: [
-      { socket_address: { address: 172.18.0.3, port_value: 80 }},
-      { socket_address: { address: 172.18.0.4, port_value: 80 }}
-    ]
+    load_assignment:
+      cluster_name: nodes
+      endpoints:
+      - lb_endpoints:
+        - endpoint:
+            address:
+              socket_address:
+                address: 172.30.1.2
+                port_value: 8008
+        - endpoint:
+            address:
+              socket_address:
+                address: 172.30.1.2
+                port_value: 8009
 ```
 
 For more information about other load balancing policies visit the [Envoy documentation](https://www.envoyproxy.io/docs/envoy/v1.8.0/intro/arch_overview/load_balancing).

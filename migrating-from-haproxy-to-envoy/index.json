@@ -34,7 +34,8 @@
     "assets": {
       "host01": [
           {"file": "haproxy.cfg", "target": "/root/"},
-          {"file": "completed.yaml", "target": "/root/"}
+          {"file": "completed.yaml", "target": "/root/"},
+          {"file": "envoy.yaml", "target": "/root/"}
       ]
     }
   },
