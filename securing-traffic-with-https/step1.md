@@ -5,11 +5,12 @@ For testing purposes the command below will generate a self-signed certificate f
 The command below creates a new certificate and key within a directory calls certs/. It sets the domain to **example.com**.
 
 ```
-mkdir certs; cd certs;
+mkdir envoy/certs; cd envoy/certs;
 openssl req -nodes -new -x509 \
   -keyout example-com.key -out example-com.crt \
   -days 365 \
   -subj '/CN=example.com/O=My Company Name LTD./C=US';
+chmod 644 exmaple-com.key
 cd -
 ```{{execute}}
 
