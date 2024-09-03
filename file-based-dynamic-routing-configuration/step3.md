@@ -13,7 +13,7 @@ Within the static configuration, this was defined as:
       { socket_address: { address: 172.18.0.3, port_value: 80 }},
       { socket_address: { address: 172.18.0.4, port_value: 80 }}
     ]
-```{{copy}}
+```
 
 ## Convert to EDS
 
@@ -34,4 +34,4 @@ Add the following cluster to the end of the Envoy configuration.
 
 ```{{copy}}
 
-The values for the upstream servers, such as `172.18.0.3` and `172.18.0.4`, will come from the file `eds.conf`.
+The values for the upstream servers, such as `172.18.0.3`{{}} and `172.18.0.4`{{}}, will come from the file `eds.conf`.

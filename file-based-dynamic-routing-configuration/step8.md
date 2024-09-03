@@ -1,6 +1,6 @@
 With the configuration based on CDS, LDS and EDS, we can dynamically add a new cluster.
 
-Open the file `cds.conf`.
+Open the file `cds.conf`{{}}.
 
 ## Add new cluster
 
@@ -73,7 +73,7 @@ Create the file `eds1.conf` with this content:
 }
 ```{{copy}}
 
-And you can use this new cluster, in the listener that you previously configured. Open the file `lds.conf`.
+And you can use this new cluster, in the listener that you previously configured. Open the file `lds.conf`{{}}.
 Replace the target cluster with the name of the new cluster `newTargetCluster`.
 
 ```json
@@ -129,12 +129,12 @@ The configuration of `lds.conf` should look like:
 ```
 
 Start two HTTP servers to handle the incoming requests for the new cluster
-`docker run -d katacoda/docker-http-server; docker run -d katacoda/docker-http-server;`{{execute}}
+`docker run -d -p 8008:80 nginx:alpine; docker run -d -p 8009:80 nginx:alpine;`{{exec}}
 
 Based on how Docker handles file inode tracking, sometimes the filesystem change isn't triggered and detected.
-Force the change with the command: `mv cds.conf tmp; mv tmp cds.conf; mv lds.conf tmp; mv tmp lds.conf`{{execute}}
+Force the change with the command: `mv cds.conf tmp; mv tmp cds.conf; mv lds.conf tmp; mv tmp lds.conf`{{exec}}
 
 Envoy should automatically reload the configuration and add the new cluster. You can try running the following command:
-`curl localhost:81`{{execute}}.
+`curl localhost:81`{{exec}}.
 
-You can notice with the response of each request, that the ID of the nodes changes, corresponding to the nodes of `newTargetCluster`.
+You can notice with the response of each request, that the ID of the nodes changes, corresponding to the nodes of `newTargetCluster`{{}}.

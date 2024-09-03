@@ -36,6 +36,6 @@ Replace the configuration with the following to add a new endpoint to the cluste
 }
 ```{{copy}}
 
-Based on how Docker handles file inode tracking, sometimes the filesystem change isn't triggered and detected. Force the change with the command `mv eds.conf tmp; mv tmp eds.conf`{{execute}}
+Based on how Docker handles file inode tracking, sometimes the filesystem change isn't triggered and detected. Force the change with the command `mv eds.conf tmp; mv tmp eds.conf`{{exec}}
 
-Envoy should automatically reload the configuration and add the new node into the load balancing rotation `curl localhost`{{execute}}
+Envoy should automatically reload the configuration and add the new node into the load balancing rotation `curl localhost`{{exec}}

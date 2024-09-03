@@ -106,5 +106,5 @@ docker run --name=proxy-eds-cds-lds-filebased -d \
 **Note:** to avoid port conflicts, we exposed the ports with offset 1.
 
 Execute the following command:
-`curl localhost:81`{{execute}}
+`curl localhost:81`{{exec}}
 
