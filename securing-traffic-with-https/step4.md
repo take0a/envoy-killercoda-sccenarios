@@ -8,7 +8,7 @@ In this case, the Proxy is exposed on both Port 80 for the HTTP traffic, and 443
 
 All the HTTPS and TLS termination is handled via Envoy Proxy meaning the application doesn't need to be modified. To start a series of HTTP servers to handle the incoming requests run the following command:
 
-`docker run -d katacoda/docker-http-server; docker run -d katacoda/docker-http-server;`{{execute}}
+`docker run -d -p 8008:80 nginx:alpine; docker run -d -p 8009:80 nginx:alpine;`{{execute}}
 
 ## Testing Configuration
 

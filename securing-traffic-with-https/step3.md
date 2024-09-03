@@ -20,7 +20,7 @@ route_config:
 This needs to be extended to include the field HTTPS Redirect.
 
 ```yaml
-redirect:
+                redirect:
                   path_redirect: "/"
                   https_redirect: true
 ```{{copy}}
