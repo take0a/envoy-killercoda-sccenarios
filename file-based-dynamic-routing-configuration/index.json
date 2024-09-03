@@ -45,14 +45,8 @@
     },
     "assets": {
       "host01": [
-          {"file": "envoy.yaml", "target": "/root/"},
-          {"file": "envoy-completed.yaml", "target": "/root/"},
-          {"file": "envoy1.yaml", "target": "/root/"},
-          {"file": "envoy1-completed.yaml", "target": "/root/"},
-          {"file": "eds.conf", "target": "/root/"},
-          {"file": "cds.conf", "target": "/root/"},
-          {"file": "lds.conf", "target": "/root/"}
-        ]
+        {"file": "**", "target": "~/assets"}
+      ]
     }
   },
   "files": ["eds.conf", "cds.conf", "lds.conf"],
