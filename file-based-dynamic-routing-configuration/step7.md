@@ -1,86 +1,94 @@
 With EDS in place, it's possible to move to scale up the upstream clusters. If we wanted to be able to dynamically add new domains and clusters, the Cluster Discovery Service (CDS) API needs to be implemented. In the following steps, we are configuring the Cluster Discovery Service (CDS) and The Listener Discovery Service (LDS).
 
-You need to create a file to put the configuration for the clusters: `cds.conf`.
+You need to create a file to put the configuration for the clusters: `cds.conf`{{}}.
 
-```yaml
+```json
 {
   "version_info": "0",
-  "resources": [{
-      "@type": "type.googleapis.com/envoy.api.v2.Cluster",
+  "resources": [
+    {
+      "@type": "type.googleapis.com/envoy.config.cluster.v3.Cluster",
       "name": "targetCluster",
-			"connect_timeout": "0.25s",
-			"lb_policy": "ROUND_ROBIN",
-			"type": "EDS",
-			"eds_cluster_config": {
-				"service_name": "localservices",
-				"eds_config": {
-					"path": "/etc/envoy/eds.conf"
-				}
-			}
-  }]
+      "connect_timeout": "0.25s",
+      "lb_policy": "ROUND_ROBIN",
+      "type": "EDS",
+      "eds_cluster_config": {
+        "service_name": "localservices",
+        "eds_config": {
+          "path": "/etc/envoy/eds.conf"
+        }
+      }
+    }
+  ]
 }
 ```{{copy}}
 
-And also, you need to create a file to put the configuration for the listeners: `lds.conf`.
+And also, you need to create a file to put the configuration for the listeners: `lds.conf`{{}}.
 
-```yaml
+```json
 {
-    "version_info": "0",
-    "resources": [{
-            "@type": "type.googleapis.com/envoy.api.v2.Listener",
-            "name": "listener_0",
-            "address": {
-                "socket_address": {
-                    "address": "0.0.0.0",
-                    "port_value": 10000
-                }
-            },
-            "filter_chains": [
-                {
-                    "filters": [
+  "version_info": "0",
+  "resources": [
+    {
+      "@type": "type.googleapis.com/envoy.config.listener.v3.Listener",
+      "name": "listener_0",
+      "address": {
+        "socket_address": {
+          "address": "0.0.0.0",
+          "port_value": 10000
+        }
+      },
+      "filter_chains": [
+        {
+          "filters": [
+            {
+              "name": "envoy.filters.network.http_connection_manager",
+              "typed_config": {
+                "@type": "type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager",
+                "stat_prefix": "ingress_http",
+                "codec_type": "AUTO",
+                "route_config": {
+                  "name": "local_route",
+                  "virtual_hosts": [
+                    {
+                      "name": "local_service",
+                      "domains": [
+                        "*"
+                      ],
+                      "routes": [
                         {
-                            "name": "envoy.http_connection_manager",
-                            "config": {
-                                "stat_prefix": "ingress_http",
-                                "codec_type": "AUTO",
-                                "route_config": {
-                                    "name": "local_route",
-                                    "virtual_hosts": [
-                                        {
-                                            "name": "local_service",
-                                            "domains": [
-                                                "*"
-                                            ],
-                                            "routes": [
-                                                {
-                                                    "match": {
-                                                        "prefix": "/"
-                                                    },
-                                                    "route": {
-                                                        "cluster": "targetCluster"
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                },
-                                "http_filters": [
-                                    {
-                                        "name": "envoy.router"
-                                    }
-                                ]
-                            }
+                          "match": {
+                            "prefix": "/"
+                          },
+                          "route": {
+                            "cluster": "targetCluster"
+                          }
                         }
-                    ]
-                }
-            ]
-    }]
+                      ]
+                    }
+                  ]
+                },
+                "http_filters": [
+                  {
+                    "name": "envoy.filters.http.router",
+                    "typed_config": {
+                      "@type": "type.googleapis.com/envoy.extensions.filters.http.router.v3.Router"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
 ```{{copy}}
 
-The content of files `cds.conf` and `lds.conf`  is a JSON definition of with the same information defined within our static configuration.
+The content of files `cds.conf`{{}} and `lds.conf`{{}}  is a JSON definition of with the same information defined within our static configuration.
 
-With the externalized the configuration of clusters and listeners, you need to modify your Envoy's configuration to make reference to these files. This can be accomplish changing all the `static_resources` for `dynamic_resources`.
+With the externalized the configuration of clusters and listeners, you need to modify your Envoy's configuration to make reference to these files. This can be accomplish changing all the `static_resources`{{}} for `dynamic_resources`{{}}.
 
 Open the Envoy configuration file `envoy1.yaml`, and add the following configuration:
 

@@ -9,21 +9,22 @@ We'll call this new cluster `newTargetCluster`. Replace the configuration with t
 ```json
 {
   "version_info": "0",
-  "resources": [{
-      "@type": "type.googleapis.com/envoy.api.v2.Cluster",
+  "resources": [
+    {
+      "@type": "type.googleapis.com/envoy.config.cluster.v3.Cluster",
       "name": "targetCluster",
-			"connect_timeout": "0.25s",
-			"lb_policy": "ROUND_ROBIN",
-			"type": "EDS",
-			"eds_cluster_config": {
-				"service_name": "localservices",
-				"eds_config": {
-					"path": "/etc/envoy/eds.conf"
-				}
-			}
-  },
-  {
-      "@type": "type.googleapis.com/envoy.api.v2.Cluster",
+      "connect_timeout": "0.25s",
+      "lb_policy": "ROUND_ROBIN",
+      "type": "EDS",
+      "eds_cluster_config": {
+        "service_name": "localservices",
+        "eds_config": {
+          "path": "/etc/envoy/eds.conf"
+        }
+      }
+    },
+    {
+      "@type": "type.googleapis.com/envoy.config.cluster.v3.Cluster",
       "name": "newTargetCluster",
 			"connect_timeout": "0.25s",
 			"lb_policy": "ROUND_ROBIN",
@@ -34,7 +35,8 @@ We'll call this new cluster `newTargetCluster`. Replace the configuration with t
 					"path": "/etc/envoy/eds1.conf"
 				}
 			}
-  }]
+    }
+  ]
 }
 ```{{copy}}
 
@@ -44,32 +46,38 @@ Create the file `eds1.conf` with this content:
 ```json
 {
   "version_info": "0",
-  "resources": [{
-    "@type": "type.googleapis.com/envoy.api.v2.ClusterLoadAssignment",
-    "cluster_name": "localservices",
-    "endpoints": [{
-      "lb_endpoints": [{
-        "endpoint": {
-          "address": {
-            "socket_address": {
-              "address": "172.18.0.6",
-              "port_value": 80
+  "resources": [
+    {
+      "@type": "type.googleapis.com/envoy.config.endpoint.v3.ClusterLoadAssignment",
+      "cluster_name": "localservices",
+      "endpoints": [
+        {
+          "lb_endpoints": [
+            {
+              "endpoint": {
+                "address": {
+                  "socket_address": {
+                    "address": "172.30.1.2",
+                    "port_value": 8009
+                  }
+                }
+              }
+            },
+            {
+              "endpoint": {
+                "address": {
+                  "socket_address": {
+                    "address": "172.30.1.2",
+                    "port_value": 8010
+                  }
+                }
+              }
             }
-          }
+          ]
         }
-      },
-	    {
-        "endpoint": {
-          "address": {
-            "socket_address": {
-              "address": "172.18.0.7",
-              "port_value": 80
-            }
-          }
-        }
-      }]
-    }]
-  }]
+      ]
+    }
+  ]
 }
 ```{{copy}}
 
@@ -86,50 +94,54 @@ The configuration of `lds.conf` should look like:
 
 ```json
 ...
-            "filter_chains": [
-                {
-                    "filters": [
+      "filter_chains": [
+        {
+          "filters": [
+            {
+              "name": "envoy.filters.network.http_connection_manager",
+              "typed_config": {
+                "@type": "type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager",
+                "stat_prefix": "ingress_http",
+                "codec_type": "AUTO",
+                "route_config": {
+                  "name": "local_route",
+                  "virtual_hosts": [
+                    {
+                      "name": "local_service",
+                      "domains": [
+                        "*"
+                      ],
+                      "routes": [
                         {
-                            "name": "envoy.http_connection_manager",
-                            "config": {
-                                "stat_prefix": "ingress_http",
-                                "codec_type": "AUTO",
-                                "route_config": {
-                                    "name": "local_route",
-                                    "virtual_hosts": [
-                                        {
-                                            "name": "local_service",
-                                            "domains": [
-                                                "*"
-                                            ],
-                                            "routes": [
-                                                {
-                                                    "match": {
-                                                        "prefix": "/"
-                                                    },
-                                                    "route": {
-                                                       "cluster": "newTargetCluster"
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                },
-                                "http_filters": [
-                                    {
-                                        "name": "envoy.router"
-                                    }
-                                ]
-                            }
+                          "match": {
+                            "prefix": "/"
+                          },
+                          "route": {
+                            "cluster": "newTargetCluster"
+                          }
                         }
-                    ]
-                }
-            ]
+                      ]
+                    }
+                  ]
+                },
+                "http_filters": [
+                  {
+                    "name": "envoy.filters.http.router",
+                    "typed_config": {
+                      "@type": "type.googleapis.com/envoy.extensions.filters.http.router.v3.Router"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
 ...
 ```
 
 Start two HTTP servers to handle the incoming requests for the new cluster
-`docker run -d -p 8008:80 nginx:alpine; docker run -d -p 8009:80 nginx:alpine;`{{exec}}
+`docker run -d -p 8009:80 nginx:alpine; docker run -d -p 8010:80 nginx:alpine;`{{exec}}
 
 Based on how Docker handles file inode tracking, sometimes the filesystem change isn't triggered and detected.
 Force the change with the command: `mv cds.conf tmp; mv tmp cds.conf; mv lds.conf tmp; mv tmp lds.conf`{{exec}}

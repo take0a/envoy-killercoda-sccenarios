@@ -1,22 +1,22 @@
-With the configuration based on EDS, when the services need to be scaled up a new endpoint can be added to the `eds.conf`. Envoy will then automatically include the changes.
+With the configuration based on EDS, when the services need to be scaled up a new endpoint can be added to the `eds.conf`{{}}. Envoy will then automatically include the changes.
 
 ## Task
 
 Replace the configuration with the following to add a new endpoint to the cluster.
 
-```yaml
+```json
 {
   "version_info": "0",
   "resources": [{
-    "@type": "type.googleapis.com/envoy.api.v2.ClusterLoadAssignment",
+    "@type": "type.googleapis.com/envoy.config.endpoint.v3.ClusterLoadAssignment",
     "cluster_name": "localservices",
     "endpoints": [{
       "lb_endpoints": [{
         "endpoint": {
           "address": {
             "socket_address": {
-              "address": "172.18.0.3",
-              "port_value": 80
+              "address": "172.30.1.2",
+              "port_value": 8008
             }
           }
         }
@@ -25,8 +25,8 @@ Replace the configuration with the following to add a new endpoint to the cluste
         "endpoint": {
           "address": {
             "socket_address": {
-              "address": "172.18.0.4",
-              "port_value": 80
+              "address": "172.30.1.2",
+              "port_value": 8009
             }
           }
         }

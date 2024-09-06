@@ -4,19 +4,19 @@ The contents of `eds.conf`{{}} is a JSON definition of the same information defi
 
 Create `eds.conf`{{}} file with the following content:
 
-```yaml
+```json
 {
   "version_info": "0",
   "resources": [{
-    "@type": "type.googleapis.com/envoy.api.v2.ClusterLoadAssignment",
+    "@type": "type.googleapis.com/envoy.config.endpoint.v3.ClusterLoadAssignment",
     "cluster_name": "localservices",
     "endpoints": [{
       "lb_endpoints": [{
         "endpoint": {
           "address": {
             "socket_address": {
-              "address": "172.18.0.3",
-              "port_value": 80
+              "address": "172.30.1.2",
+              "port_value": 8008
             }
           }
         }
@@ -26,4 +26,4 @@ Create `eds.conf`{{}} file with the following content:
 }
 ```{{copy}}
 
-This defines a single endpoint at `172.18.0.3`{{}}.
+This defines a single endpoint at `172.30.1.2:8008`{{}}.
