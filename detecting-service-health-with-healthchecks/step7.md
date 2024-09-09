@@ -2,7 +2,7 @@ Unlike active health checking, *Outlier Detection* (sometimes called passive hea
 
 Like health checks, outlier detection is configured per-cluster. This configuration removes a host for 30 seconds when it returns 3 consecutive 5xx errors:
 
-Open the file `envoy1.yaml` and add the following configuration:
+Open the file `envoy1.yaml`{{}} and add the following configuration:
 
 ```
     outlier_detection:
@@ -16,4 +16,4 @@ The key fields are:
 
 * **base_ejection_time**: The base time that a host is ejected for. The real time is equal to the base time multiplied by the number of times the host has been ejected. Defaults to 30000ms or 30s.
 
-More details on the API can be found at [Envoy documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v2/api/v2/cluster/outlier_detection.proto).
+More details on the API can be found at [Envoy documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/cluster/v3/outlier_detection.proto).

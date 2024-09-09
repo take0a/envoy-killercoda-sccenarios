@@ -21,4 +21,4 @@ The key fields are:
 
 * **http_health_check.path**: Specifies the HTTP path that will be requested during health checking
 
-More details on the API can be found at [with the documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v2/api/v2/core/health_check.proto).
+More details on the API can be found at [with the documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/health_check.proto).
