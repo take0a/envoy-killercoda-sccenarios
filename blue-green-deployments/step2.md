@@ -8,16 +8,16 @@ Envoy Proxy routes are defined in order, meaning the first route to match is the
 
 Within having the additional match before other definitions for the prefix, the matching will be ignored.
 
-The configuration below adds a new route for `/service/2` which will only be accessible if the HTTP Header `x-canary-version` has been defined.
+The configuration below adds a new route for `/service/2`{{}} which will only be accessible if the HTTP Header `x-canary-version`{{}} has been defined.
 
 ```yaml
-- match:
+              - match:
                   prefix: "/service/2"
                   headers:
                   - name: "x-canary-version"
                     exact_match: "service2a"
                 route:
                   cluster: service2a
-```{{copy}}
+```
 
-Envoy supports a number of different matching patterns for headers that are included within the [HeaderMatcher documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v2/api/v2/route/route.proto.html?highlight=strip%20headers#route-headermatcher).
+Envoy supports a number of different matching patterns for headers that are included within the [HeaderMatcher documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route_components.proto#envoy-v3-api-msg-config-route-v3-headermatcher).

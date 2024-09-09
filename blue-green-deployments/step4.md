@@ -9,7 +9,7 @@ By rolling out traffic in a phased motion it's possible to check that no new bug
 Replace the string _#TODO Service3_ within the `envoy.yaml` file with the configuration snippet below.
 
 ```yaml
-- match:
+              - match:
                   prefix: "/service/3"
                 route:
                   weighted_clusters:
