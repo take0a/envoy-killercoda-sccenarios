@@ -2,9 +2,9 @@
 
 The optional load balancing weight of the upstream host; at least 1. Envoy uses the load balancing weight in some of the built in load balancers. The load balancing weight for an endpoint is divided by the sum of the weights of all endpoints in the endpoint’s locality to produce a percentage of traffic for the endpoint. This percentage is then further weighted by the endpoint’s locality’s load balancing weight from LocalityLbEndpoints. If unspecified, each host is presumed to have equal weight in a locality.
 
-Open envoy configuration file `envoy/envoy.yaml`
+Open envoy configuration file `envoy/envoy.yaml`{{}}
 
-Add to envoy's configuration the definition of `load_assignment`
+Add to envoy's configuration the definition of `load_assignment`{{}}
 ```yaml
 load_assignment:
   cluster_name: targetCluster

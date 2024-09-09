@@ -9,7 +9,8 @@
       },
       {
         "title": "Step 2 - Weighted round robin",
-        "text": "step2.md"
+        "text": "step2.md",
+        "foreground": "assets/step2/foreground.sh"
       },
       {
         "title": "Step 3 - Generating Traffic",
