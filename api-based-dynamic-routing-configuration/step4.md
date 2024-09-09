@@ -14,4 +14,6 @@ Inbound v2 request for discovery.  POST payload: {u'node': {u'build_version': u'
 ```
 You can verify that envoy doesn't know anything about this endpoint by attempting to connect through to it:
 
-```curl -v http://localhost```{{execute}}
+```
+curl -v http://localhost
+```{{execute}}

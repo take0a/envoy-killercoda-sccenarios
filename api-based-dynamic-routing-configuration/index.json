@@ -10,7 +10,8 @@
       },
       {
         "title": "Step 2 - EDS Configuration",
-        "text": "step2.md"
+        "text": "step2.md",
+        "foreground": "assets/step2/foreground.sh"
       },
       {
         "title": "Step 3 - Start upstream services",
@@ -41,11 +42,7 @@
     },
     "assets": {
       "host01": [
-          {"file": "envoy.yaml", "target": "/root/"},
-          {"file": "eds_server/main.py", "target": "/root/"},
-          {"file": "eds_server/requirements.txt", "target": "/root/"},
-          {"file": "upstream/server.py", "target": "/root/"},
-          {"file": "upstream/requirements.txt", "target": "/root/"}
+        {"file": "**", "target": "~/assets"}
       ]
     }
   },

@@ -8,7 +8,9 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 
 Now, if you try to send a request to Envoy, you will see no healthy upstream message from envoy:
 
-```curl -v http://localhost```{{execute}}
+```
+curl -v http://localhost
+```{{execute}}
 
 ```
 HTTP/1.1 503 Service Unavailable

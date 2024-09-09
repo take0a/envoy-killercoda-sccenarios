@@ -22,7 +22,9 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ## Check client connectivity via envoy
 Since we already started the upstream service above, you can connect to it via envoy:
 
-```curl -i http://localhost```{{execute}}
+```
+curl -i http://localhost
+```{{execute}}
 
 You should see something similar to:
 
