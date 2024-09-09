@@ -102,7 +102,7 @@ class Servicesv2(Resource):
                   "version_info": _VERSION,
                   "resources": [ 
                       {
-                        "@type":"type.googleapis.com/envoy.api.v2.ClusterLoadAssignment",
+                        "@type":"type.googleapis.com/envoy.config.endpoint.v3.ClusterLoadAssignment",
                         "cluster_name": r,
                         "endpoints": [
                             {
@@ -117,7 +117,7 @@ class Servicesv2(Resource):
                   "version_info": _VERSION,
                   "resources": [ 
                       {
-                      "@type":"type.googleapis.com/envoy.api.v2.ClusterLoadAssignment",
+                      "@type":"type.googleapis.com/envoy.config.endpoint.v3.ClusterLoadAssignment",
                       "cluster_name": r
                       }
                    ] 

@@ -58,7 +58,7 @@ Filtering is defined using *filter_chains*. The aim of each _filter_ is to find 
               "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
 ```{{copy}}
 
-The filter is using *envoy.http_connection_manager*, a built-in filter designed for HTTP connections. The details are as follows:
+The filter is using *envoy.filters.network.http_connection_manager*, a built-in filter designed for HTTP connections. The details are as follows:
 
 - ***stat_prefix:*** The human-readable prefix to use when emitting statistics for the connection manager.
 

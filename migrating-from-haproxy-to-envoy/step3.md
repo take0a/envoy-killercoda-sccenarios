@@ -40,7 +40,7 @@ For the static configuration, the filters define how to handle incoming requests
                 "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
 ```{{copy}}
 
-The name *envoy.http_connection_manager* is a built-in filter within Envoy Proxy. Other filters include _Redis_, _Mongo_, _TCP_. You can find the complete list in the [documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/listener/v3/listener.proto#config-listener-v3-listener).
+The name *envoy.filters.network.http_connection_manager* is a built-in filter within Envoy Proxy. Other filters include _Redis_, _Mongo_, _TCP_. You can find the complete list in the [documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/listener/v3/listener.proto#config-listener-v3-listener).
 
 The filter controls how Envoy matches incoming HTTP requests and which cluster should handle them. The cluster controls which servers are handling the traffic and the load balancing configuration, such as Round Robin.
 
