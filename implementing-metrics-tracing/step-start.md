@@ -1,9 +1,9 @@
 An initial envoy configuration file has been created at
-`envoy.yaml`
+`envoy.yaml`{{}}
 
 In this file, it is defined that the server will run with a listener using all network interfaces in port 10000.
 
-```
+```yaml
 - name: listener_0
   address:
     socket_address: { address: 0.0.0.0, port_value: 10000 }
@@ -11,11 +11,20 @@ In this file, it is defined that the server will run with a listener using all n
 
 Also this configuration defines two nodes in `targetCluster`
 
+```yaml
+      endpoints:
+      - lb_endpoints:
+        - endpoint:
+            address:
+              socket_address:
+                address: 172.18.0.3
+                port_value: 80
+        - endpoint:
+            address:
+              socket_address:
+                address: 172.18.0.4
+                port_value: 80
 ```
-hosts: [
-  { socket_address: { address: 172.18.0.3, port_value: 80 }},
-  { socket_address: { address: 172.18.0.4, port_value: 80 }}
-]```
 
 Start the envoy proxy with the defined configuration using this command:
 
@@ -35,7 +44,9 @@ docker run -d katacoda/docker-http-server:healthy;
 
 Check if the nodes are running with this command:
 
-```curl 172.18.0.3:80; curl 172.18.0.4:80```{{execute}}
+```
+curl 172.18.0.3:80; curl 172.18.0.4:80
+```{{execute}}
 
 You should get an answer similar to
 
@@ -46,7 +57,9 @@ You should get an answer similar to
 
 And you can request through envoy
 
-```curl localhost:80```{{execute}}
+```
+curl localhost:80
+```{{execute}}
 
 Envoy is answering the request and balancing between the two nodes with a `ROUND_ROBIN` strategy according to our configuration.
 

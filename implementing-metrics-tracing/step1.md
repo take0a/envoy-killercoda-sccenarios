@@ -2,9 +2,9 @@ Prometheus is an open-source monitoring solution that can be integrated with Env
 
 Now, let's see the prometheus configuration:
 
-`prometheus.yml`
+`prometheus.yml`{{}}
 
-We can see that the prometheus config is using a job named  `envoy`.
+We can see that the prometheus config is using a job named  `envoy`{{}}.
 
 ```
 scrape_configs:
@@ -21,5 +21,5 @@ docker run -d -p 9090:9090 \
     prom/prometheus
 ```{{execute}}
 
-You can access to the prometheus dashboard using this [link]({{TRAFFIC_HOST1_80}}/targets).
+You can access to the prometheus dashboard using this [link]({{TRAFFIC_HOST1_9090}}/targets).
 

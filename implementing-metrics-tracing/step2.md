@@ -1,6 +1,6 @@
 Distributed tracing allows developers to obtain visualizations of call flows in large service oriented architectures. It can be invaluable in understanding serialization, parallelism, and sources of latency. For this example we will use Jaeger, an open source, end-to-end distributed tracing.
 
-We can see the tracing configuration in `envoy.yaml`
+We can see the tracing configuration in `envoy.yaml`{{}}
 
 ```yaml
 tracing:
@@ -15,7 +15,7 @@ tracing:
 Ensure that Jaeger is configured to accept Zipkin requests via the *COLLECTOR_ZIPKIN_HTTP_PORT* Environment Variable.
 
 One important configuration for our example is telling to the connection manager that generates the
- `x-request-id` header if it does not exist.
+ `x-request-id`{{}} header if it does not exist.
 
  ```yaml
  generate_request_id: true

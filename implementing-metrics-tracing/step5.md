@@ -17,7 +17,7 @@ The URL for phometheus should be:
 
 For all the other fields you can use the default values
 
-![](/envoyproxy/scenarios/implementing-metrics-tracing/assets/prometheus-data-source.png)
+![](/envoyproxy-scenarios/scenario/implementing-metrics-tracing/assets/prometheus-data-source.png)
 
 Test and save your datasource.
 
@@ -26,19 +26,19 @@ Test and save your datasource.
 In order to build a dashboard you can build one from scratch or you can use an existing one, for example:
 https://grafana.com/dashboards/6693
 
-Let's use this existing dashboard. Copy the ID, and use the option `Import`.
+Let's use this existing dashboard. Copy the ID, and use the option `Import`{{}}.
 
 `6693`{{copy}}
 
 Select **Prometheus** as the data source and Import.
 
-![](/envoyproxy/scenarios/implementing-metrics-tracing/assets/import.png)
+![](/envoyproxy-scenarios/scenario/implementing-metrics-tracing/assets/import.png)
 
 [View Dashboard for the targetCluster]({{TRAFFIC_HOST1_3000}}/d/000000003/envoy-proxy?refresh=5s&orgId=1&var-cluster=targetCluster&var-hosts=All)
 
 ## Change Traffic
 
-`while true; do curl localhost; sleep .1; done`{{execute interrupt T2}}
+`while true; do curl localhost; sleep .1; done`{{execute interrupt}}
 
 Should see a big spike in the traffic on the dashboard.
 
