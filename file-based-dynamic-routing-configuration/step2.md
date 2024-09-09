@@ -1,6 +1,6 @@
 An initial outline of the Envoy configuration required is available at `envoy.yaml`
 
-The first changes required is to add a [Node](https://www.envoyproxy.io/docs/envoy/latest/api-v2/api/v2/core/base.proto#core-node). This allows the Envoy node to be identified, potentially allowing for unique configurations to be applied. 
+The first changes required is to add a [Node](https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/base.proto#config-core-v3-node). This allows the Envoy node to be identified, potentially allowing for unique configurations to be applied. 
 
 ## Task
 

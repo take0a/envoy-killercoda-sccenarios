@@ -38,7 +38,7 @@ We'll call this new cluster `newTargetCluster`. Replace the configuration with t
     }
   ]
 }
-```{{copy}}
+```
 
 You also need to create the `eds_cluster_config` file for this new cluster.
 Create the file `eds1.conf` with this content:

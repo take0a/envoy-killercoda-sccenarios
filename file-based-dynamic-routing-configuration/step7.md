@@ -21,7 +21,7 @@ You need to create a file to put the configuration for the clusters: `cds.conf`{
     }
   ]
 }
-```{{copy}}
+```
 
 And also, you need to create a file to put the configuration for the listeners: `lds.conf`{{}}.
 
@@ -84,7 +84,7 @@ And also, you need to create a file to put the configuration for the listeners: 
     }
   ]
 }
-```{{copy}}
+```
 
 The content of files `cds.conf`{{}} and `lds.conf`{{}}  is a JSON definition of with the same information defined within our static configuration.
 
@@ -106,8 +106,8 @@ After that, launch the container with the following command:
 docker run --name=proxy-eds-cds-lds-filebased -d \
     -p 9902:9901 \
     -p 81:10000 \
-    -v /root/:/etc/envoy \
-    -v /root/envoy1.yaml:/etc/envoy/envoy.yaml \
+    -v /root/envoy/:/etc/envoy \
+    -v /root/envoy/envoy1.yaml:/etc/envoy/envoy.yaml \
     envoyproxy/envoy:v1.31-latest
 ```{{execute}}
 

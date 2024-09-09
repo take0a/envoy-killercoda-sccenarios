@@ -22,7 +22,8 @@
       },
       {
         "title": "Step 5 - Start Envoy",
-        "text": "step5.md"
+        "text": "step5.md",
+        "foreground": "assets/step5/foreground.sh"
       },
       {
         "title": "Step 6 - Apply Changes",
@@ -30,7 +31,8 @@
       },
       {
         "title": "Step 7 - CDS Configuration",
-        "text": "step7.md"
+        "text": "step7.md",
+        "foreground": "assets/step7/foreground.sh"
       },
       {
         "title": "Step 8 - CDS Apply Changes",
